@@ -1,0 +1,48 @@
+import { AppService } from './app.service';
+import { ApiTags } from '@nestjs/swagger';
+import { ModifyCredentialsDto, CredentialsBodyDto } from './common/dto';
+import {
+	Controller,
+	Post,
+	Patch,
+	Req,
+	Body } from '@nestjs/common';
+	import {
+		GetTokenSwagger,
+		ModifyCredentialsSwagger,
+		RefreshDbxTokenSwagger } from './decorators/swagger/app';
+import type { Request } from "express"
+		
+
+@ApiTags("app")
+@Controller()
+export class AppController {
+	constructor(
+		private readonly appService: AppService
+	) {}
+
+	getHello() {
+		return "Hello World!";
+	}
+
+	/**
+	 * get token with credentials in body or Authorization header (Basic Scheme).
+	 */
+	@GetTokenSwagger()
+	@Post("get_token_app")
+	async generateToken(@Req() req: Request, @Body() body: CredentialsBodyDto) {
+		return this.appService.generateToken(req.headers.authorization, body)
+	}
+
+	@RefreshDbxTokenSwagger()
+	@Post("refresh_dbx_token")
+	async refreshDbxToken(@Body("user") user: string) {
+		return this.appService.refreshDbxToken(user);
+	}
+
+	@ModifyCredentialsSwagger()
+	@Patch("modify_credentials")
+	async modifyCredentials(@Body() body: ModifyCredentialsDto) {
+		return this.appService.modifyCredentials(body);
+	}
+}
