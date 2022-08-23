@@ -22,12 +22,12 @@ const initSwagger = (app: NestExpressApplication) => {
 		bearerFormat: "JWT",
 		name: "auth_services",
 		in: "header",
-		description: "Set the token to use for service endpoints.<br />If you don't have a token, get it <a href='/'>here</a>."
+		description: "Set the token to use for service endpoints."
 	}, "services")
 	.addTag("app", "")
 	.addTag("auth", "")
-	.addTag("manage users", "Key is required, provide it at the top right (x-admin header). Or else, you can also provide an x-admin header for each endpoint.")
-	.addTag("services", "Services for users. A token is required, provide it at the top right.")
+	.addTag("manage users", "")
+	.addTag("services", "")
 	.build();
 
 	var document = SwaggerModule.createDocument(app, config, {

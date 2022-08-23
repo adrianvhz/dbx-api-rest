@@ -4,7 +4,7 @@ import { ApiOperation, ApiQuery } from "@nestjs/swagger"
 export function FilesGetThumbnailSwagger() {
 	return applyDecorators(
 		ApiOperation({
-			summary: "incomplete implementation"
+			summary: "ii ..."
 		}),
 		ApiQuery({
 			name: "resource",

@@ -9,7 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy)
 	constructor(private authService: AuthService) {
 		super({
 		usernameField: "user",
-		passwordField: "domain", // domainField
+		passwordField: "user",
 		session: false,
 		// passReqToCallback: true
 		});
@@ -17,6 +17,6 @@ export class LocalStrategy extends PassportStrategy(Strategy)
 
 	async validate(usernameField: string): Promise<any> {
 		// Return the user data or "null". Saved to req.user
-		return await this.authService.validateUser(usernameField) || "null";
+		return await this.authService.validateUser(usernameField);
 	}
 }

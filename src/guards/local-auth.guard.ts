@@ -1,5 +1,7 @@
 import { Injectable, ExecutionContext, HttpException } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { Request } from "express";
+import { Observable } from "rxjs";
 import { LinkAccountException } from "src/exceptions/LinkAccountException";
 
 @Injectable()
@@ -9,13 +11,14 @@ export class LocalAuthGuard extends AuthGuard("local") {
 			console.log(err)
 			throw new HttpException("Undocumented Error, please contact us.", 500);
 		}
-		const request = ctx.switchToHttp().getRequest();
-		if (!request.body.user) {
+		const req: Request = ctx.switchToHttp().getRequest();
+		
+		if (!req.body.user) {
 			throw new LinkAccountException("user field missing.");
 		}
-		if (!request.body.domain) {
-			throw new LinkAccountException("domain field missing.");
-		}
+		// if (!req.body.domain) {
+		// 	req.body.domain = "default domain"
+		// }
 		return user
 	}
 }

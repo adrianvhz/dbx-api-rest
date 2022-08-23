@@ -27,19 +27,19 @@ export class AuthService
 		var user = await this.usersService.findOne(userField, { throwError: false });
 		if (!user) return "null";
 		return await user.populate({
-			path: "history",
-			select: "status"
+			path: "history"
 		})
 	}
 
 	async linkDbxAccount(req: Request, res: Response) {
 		const dropboxConfig = this.configService.get<IDropboxConfig>("dropbox");
+
 		var user = req.user;
 		var isNew = false;
 		
 		// Create user if not exists
 		// @ts-ignore
-		if (req.user === "null") {
+		if (user === "null") {
 			user = await this.usersService.create({
 				user: req.body.user,
 				client_key: await generateSecureRandomKey(9),
@@ -47,7 +47,6 @@ export class AuthService
 			})
 			isNew = true;
 		}
-
 		/**
 		 * For accounts registered in inactive status
 		 */
