@@ -1,5 +1,5 @@
 import { applyDecorators } from "@nestjs/common";
-import { ApiQuery } from "@nestjs/swagger";
+import { ApiParam, ApiQuery } from "@nestjs/swagger";
 
 export function FilesGetPreviewSwagger() {
 	return applyDecorators(
@@ -9,6 +9,13 @@ export function FilesGetPreviewSwagger() {
 			schema: {
 				type: "string"
 			}
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
+			required: false
 		})
 	)
 }

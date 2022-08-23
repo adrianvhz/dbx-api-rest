@@ -1,0 +1,4332 @@
+{
+	"info": {
+		"_postman_id": "9c8f09c5-0267-4164-9318-7503308171ab",
+		"name": "DBX-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20703402"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Auth Controller link Dbx Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "exercitation e"
+								},
+								{
+									"key": "domain",
+									"value": "ut sunt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/link_account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"link_account"
+							]
+						},
+						"description": "Link account"
+					},
+					"response": [
+						{
+							"name": "Successful operation!",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "exercitation e"
+										},
+										{
+											"key": "domain",
+											"value": "ut sunt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/link_account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"link_account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Successful operation! (User has been created).",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "exercitation e"
+										},
+										{
+											"key": "domain",
+											"value": "ut sunt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/link_account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"link_account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "exercitation e"
+										},
+										{
+											"key": "domain",
+											"value": "ut sunt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/link_account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"link_account"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Auth Controller unlink Account",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "in reprehenderit laboris et ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/unlink_account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"unlink_account"
+							]
+						},
+						"description": "Unlink account"
+					},
+					"response": [
+						{
+							"name": "Successful operation!",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "in reprehenderit laboris et ad"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/unlink_account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"unlink_account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "in reprehenderit laboris et ad"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/unlink_account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"unlink_account"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "{user}",
+					"item": [
+						{
+							"name": "Get user",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:user?history=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":user"
+									],
+									"query": [
+										{
+											"key": "history",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/:user?history=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":user"
+											],
+											"query": [
+												{
+													"key": "history",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update user",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"enim est fugiat dolore\",\n  \"client_key\": \"Lorem anim et in\",\n  \"client_secret\": \"laboris eu\",\n  \"tk_acs\": \"esse ullamco minim\",\n  \"tk_rfsh\": \"non velit in aliquip deserunt\",\n  \"dbx_email\": \"dol\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"user\": \"enim est fugiat dolore\",\n  \"client_key\": \"Lorem anim et in\",\n  \"client_secret\": \"laboris eu\",\n  \"tk_acs\": \"esse ullamco minim\",\n  \"tk_rfsh\": \"non velit in aliquip deserunt\",\n  \"dbx_email\": \"dol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/:user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":user"
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete user",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/:user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":user"
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "x-admin",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "<API Key>",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin",
+								"value": "sit"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users?history=false",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "history",
+									"value": "false",
+									"description": "Obtener el registro del usuario.<br /><b>Default: false</b>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful operation!",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users?history=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "history",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users?history=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "history",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users?history=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "history",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "x-admin",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "<API Key>",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin",
+								"value": "sit"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful operation! (User has been created).",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error: Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users-history",
+			"item": [
+				{
+					"name": "{user}",
+					"item": [
+						{
+							"name": "Users History Controller gets User History",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users-history/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users-history",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users-history/:user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users-history",
+												":user"
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Users History Controller update User History",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"deserunt incididunt Lorem dolore eu\",\n  \"status\": \"labore\",\n  \"dropbox_emails\": [\n    \"anim esse eu fugiat\",\n    \"consectetur\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users-history/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users-history",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"user\": \"nisi eu fugiat\",\n  \"status\": \"aliqua non tempor\",\n  \"dropbox_emails\": [\n    \"ex nulla ea\",\n    \"amet\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users-history/:user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users-history",
+												":user"
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Users History Controller delete User History",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "x-admin",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "<API Key>",
+											"type": "string"
+										},
+										{
+											"key": "in",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users-history/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users-history",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "x-admin",
+												"value": "<API Key>"
+											},
+											{
+												"key": "x-admin",
+												"value": "sit"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users-history/:user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users-history",
+												":user"
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Users History Controller get All Users History",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "x-admin",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "<API Key>",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin",
+								"value": "sit"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users-history",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users-history"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users-history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users-history"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Users History Controller create User History",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "x-admin",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "<API Key>",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin",
+								"value": "sit"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": \"deserunt incididunt Lorem dolore eu\",\n  \"status\": \"labore\",\n  \"dropbox_emails\": [\n    \"anim esse eu fugiat\",\n    \"consectetur\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users-history",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users-history"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "x-admin",
+										"value": "<API Key>"
+									},
+									{
+										"key": "x-admin",
+										"value": "sit"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": \"nisi eu fugiat\",\n  \"status\": \"aliqua non tempor\",\n  \"dropbox_emails\": [\n    \"ex nulla ea\",\n    \"amet\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users-history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users-history"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "{user}",
+			"item": [
+				{
+					"name": "files",
+					"item": [
+						{
+							"name": "Services Controller files List Folder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/list_folder?folder=sit&recursive=true&limit=5770981",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"list_folder"
+									],
+									"query": [
+										{
+											"key": "folder",
+											"value": "sit",
+											"description": "A unique identifier to the folder to search for. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>"
+										},
+										{
+											"key": "recursive",
+											"value": "true",
+											"description": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. Default: false"
+										},
+										{
+											"key": "limit",
+											"value": "5770981",
+											"description": "The maximum number of results to return per request."
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Starts returning the contents of a folder."
+							},
+							"response": [
+								{
+									"name": "Error: Conflict",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/list_folder?folder=sit&recursive=true&limit=5770981",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"list_folder"
+											],
+											"query": [
+												{
+													"key": "folder",
+													"value": "sit"
+												},
+												{
+													"key": "recursive",
+													"value": "true"
+												},
+												{
+													"key": "limit",
+													"value": "5770981"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller files Search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/search?query=sit&path=sit&filename_only=true&order_by=last_modified_time&max_results=81887630&file_extensions=&file_extensions=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "sit",
+											"description": "(Required) The string to search for. May match across multiple fields based on the request arguments."
+										},
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "Scopes the search to a path in the user's Dropbox. <b>[path - id]</b><br /><b>Searches the entire Dropbox if not specified.</b>"
+										},
+										{
+											"key": "filename_only",
+											"value": "true",
+											"description": "Restricts search to only match on filenames.<br /><b>Default: false</b>"
+										},
+										{
+											"key": "order_by",
+											"value": "last_modified_time",
+											"description": "Specified property of the order of search results.<br /><b>Default: relevance</b>"
+										},
+										{
+											"key": "max_results",
+											"value": "81887630",
+											"description": "The maximum number of search results to return.<br /><b>Default: 100</b>"
+										},
+										{
+											"key": "file_extensions",
+											"value": "",
+											"description": "Restricts search to only the extensions specified."
+										},
+										{
+											"key": "file_extensions",
+											"value": "",
+											"description": "Restricts search to only the extensions specified."
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Query files and folders."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/search?query=sit&path=sit&filename_only=true&order_by=last_modified_time&max_results=81887630&file_extensions=&file_extensions=",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"search"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "sit"
+												},
+												{
+													"key": "path",
+													"value": "sit"
+												},
+												{
+													"key": "filename_only",
+													"value": "true"
+												},
+												{
+													"key": "order_by",
+													"value": "last_modified_time"
+												},
+												{
+													"key": "max_results",
+													"value": "81887630"
+												},
+												{
+													"key": "file_extensions",
+													"value": ""
+												},
+												{
+													"key": "file_extensions",
+													"value": ""
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "TIP: 'shared_folder_id' can be obtained on this endpoint.",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/get_metadata?path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"get_metadata"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) The path of a file or folder on Dropbox. <b>[path - id - rev]</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Returns the metadata for a file or folder."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/get_metadata?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"get_metadata"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller get File Preview",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/get_preview?path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"get_preview"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) The path of the file to view. <b>[path - id - rev]</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/get_preview?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"get_preview"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller file To Download",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/download?path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"download"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) The path of the file to download. <b>[path - id - rev]</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation!",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"download"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Error: Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"download"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Error: Conflict",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"download"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller folder To Download Zip",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/download_folder?path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"download_folder"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) The path of the folder to download. <b>[path - id]</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/download_folder?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"download_folder"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller upload File",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"upload"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "Folder path in the user's Dropbox to save the file. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>"
+										},
+										{
+											"key": "mode",
+											"value": "add",
+											"description": "Selects what to do if the file already exists.<br /><b>Default: add</b>"
+										},
+										{
+											"key": "autorename",
+											"value": "true",
+											"description": "If there's a conflict, as determined by `mode`, have the Dropbox server try to autorename the file to avoid conflict error.<br /><b>Default: false</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation!",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"upload"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												},
+												{
+													"key": "mode",
+													"value": "add"
+												},
+												{
+													"key": "autorename",
+													"value": "true"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Error: Conflict",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"upload"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												},
+												{
+													"key": "mode",
+													"value": "add"
+												},
+												{
+													"key": "autorename",
+													"value": "true"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller files Upload File From Url",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/upload_from_url?url=sit&path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"upload_from_url"
+									],
+									"query": [
+										{
+											"key": "url",
+											"value": "sit",
+											"description": "(Required) The URL to be saved."
+										},
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "The path in Dropbox where the URL will be saved to.<br /><b>Example:</b> /images/cat.jpg"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/upload_from_url?url=sit&path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"upload_from_url"
+											],
+											"query": [
+												{
+													"key": "url",
+													"value": "sit"
+												},
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller copy Files",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/copy?from_path=sit&to_path=sit&autorename=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"copy"
+									],
+									"query": [
+										{
+											"key": "from_path",
+											"value": "sit",
+											"description": "(Required) Path in the user's Dropbox to be copied or moved. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "to_path",
+											"value": "sit",
+											"description": "(Required) Path in the user's Dropbox that is the destination. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "autorename",
+											"value": "true",
+											"description": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.<br /><b>Default: false</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/copy?from_path=sit&to_path=sit&autorename=true",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"copy"
+											],
+											"query": [
+												{
+													"key": "from_path",
+													"value": "sit"
+												},
+												{
+													"key": "to_path",
+													"value": "sit"
+												},
+												{
+													"key": "autorename",
+													"value": "true"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller move Files",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/move?from_path=sit&to_path=sit&autorename=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"move"
+									],
+									"query": [
+										{
+											"key": "from_path",
+											"value": "sit",
+											"description": "(Required) Path in the user's Dropbox to be copied or moved. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "to_path",
+											"value": "sit",
+											"description": "(Required) Path in the user's Dropbox that is the destination. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "autorename",
+											"value": "true",
+											"description": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict.<br /><b>Default: false</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/move?from_path=sit&to_path=sit&autorename=true",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"move"
+											],
+											"query": [
+												{
+													"key": "from_path",
+													"value": "sit"
+												},
+												{
+													"key": "to_path",
+													"value": "sit"
+												},
+												{
+													"key": "autorename",
+													"value": "true"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller files Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/delete?path=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) Path in the user's Dropbox to delete. <b>[path - id]</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/delete?path=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"delete"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "ii ...",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=sit&format=png&size=w256h256&mode=strict",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"files",
+										"get_thumbnail"
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "path",
+											"description": "(Required) Information specifying which file to preview.<br />This could be a path to a file, a shared link pointing to a file, or a shared link pointing to a folder, with a relative path. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "PathOrLink",
+											"value": "sit",
+											"description": "(Required) ."
+										},
+										{
+											"key": "format",
+											"value": "png",
+											"description": "The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts.<br /><b>Default: jpeg</b>"
+										},
+										{
+											"key": "size",
+											"value": "w256h256",
+											"description": "The size for the thumbnail image.<br /><b>Default: w64h64</b>"
+										},
+										{
+											"key": "mode",
+											"value": "strict",
+											"description": "How to resize and crop the image to achieve the desired size.<br /><b>Default: strict</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=sit&format=png&size=w256h256&mode=strict",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"get_thumbnail"
+											],
+											"query": [
+												{
+													"key": "resource",
+													"value": "path"
+												},
+												{
+													"key": "PathOrLink",
+													"value": "sit"
+												},
+												{
+													"key": "format",
+													"value": "png"
+												},
+												{
+													"key": "size",
+													"value": "w256h256"
+												},
+												{
+													"key": "mode",
+													"value": "strict"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "sharing",
+					"item": [
+						{
+							"name": "Services Controller sharing Create Shared Link",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"create_shared_link"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "(Required) The path to be shared by the shared link. <b>[path - id - rev]</b>"
+										},
+										{
+											"key": "access",
+											"value": "max",
+											"description": "Requested access level you want the audience to gain from this link.<br /><b><i>Note: modifying access level for an existing link is not supported. Omit this field if it is the case.</i></b>"
+										},
+										{
+											"key": "audience",
+											"value": "public",
+											"description": "The new audience who can benefit from the access level specified by the link's access level specified in the `access` field.<br /><b>Default: public</b>"
+										},
+										{
+											"key": "allow_download",
+											"value": "true",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Boolean flag to allow or not download capabilities for shared links."
+										},
+										{
+											"key": "expires",
+											"value": "sit",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Expiration time of the shared link. Format: %Y-%m-%dT%H:%M:%SZ<br /><b>By default the link won't expire</b>"
+										},
+										{
+											"key": "require_password",
+											"value": "true",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Boolean flag to enable or disable password protection."
+										},
+										{
+											"key": "link_password",
+											"value": "sit",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />If `require_password` is true, this is needed to specify the password to access the link."
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Create a shared link with custom settings. If no settings are given then the default visibility is public."
+							},
+							"response": [
+								{
+									"name": "Successful operation!",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"create_shared_link"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												},
+												{
+													"key": "access",
+													"value": "max"
+												},
+												{
+													"key": "audience",
+													"value": "public"
+												},
+												{
+													"key": "allow_download",
+													"value": "true"
+												},
+												{
+													"key": "expires",
+													"value": "sit"
+												},
+												{
+													"key": "require_password",
+													"value": "true"
+												},
+												{
+													"key": "link_password",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller sharing Modify Shared Link",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"modify_shared_link"
+									],
+									"query": [
+										{
+											"key": "url",
+											"value": "sit",
+											"description": "(Required) URL of the shared link to change its settings."
+										},
+										{
+											"key": "access",
+											"value": "max",
+											"description": "Requested access level you want the audience to gain from this link.<br /><b><i>Note: modifying access level for an existing link is not supported. Omit this field if it is the case.</i></b>"
+										},
+										{
+											"key": "audience",
+											"value": "public",
+											"description": "The new audience who can benefit from the access level specified by the link's access level specified in the `access` field.<br /><b>Default: public</b>"
+										},
+										{
+											"key": "allow_download",
+											"value": "true",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Boolean flag to allow or not download capabilities for shared links."
+										},
+										{
+											"key": "expires",
+											"value": "sit",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Expiration time of the shared link. Format: %Y-%m-%dT%H:%M:%SZ<br /><b>By default the link won't expire</b>"
+										},
+										{
+											"key": "require_password",
+											"value": "true",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Boolean flag to enable or disable password protection."
+										},
+										{
+											"key": "link_password",
+											"value": "sit",
+											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />If `require_password` is true, this is needed to specify the password to access the link."
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Modify the shared link's settings."
+							},
+							"response": [
+								{
+									"name": "Successful operation!",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"modify_shared_link"
+											],
+											"query": [
+												{
+													"key": "url",
+													"value": "sit"
+												},
+												{
+													"key": "access",
+													"value": "max"
+												},
+												{
+													"key": "audience",
+													"value": "public"
+												},
+												{
+													"key": "allow_download",
+													"value": "true"
+												},
+												{
+													"key": "expires",
+													"value": "sit"
+												},
+												{
+													"key": "require_password",
+													"value": "true"
+												},
+												{
+													"key": "link_password",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller sharing Add File Member",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=sit&members=&members=&access_level=editor",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"add_file_member"
+									],
+									"query": [
+										{
+											"key": "file",
+											"value": "sit",
+											"description": "(Required) File to which to add members. <b>[path - id]</b>"
+										},
+										{
+											"key": "members",
+											"value": "",
+											"description": "(Required) Members to add. Two different ways to identify a member:<br /><b>dropbox_id:</b> Dropbox account, team member, or group ID of member.<br /><b>email:</b> Email of member."
+										},
+										{
+											"key": "members",
+											"value": "",
+											"description": "(Required) Members to add. Two different ways to identify a member:<br /><b>dropbox_id:</b> Dropbox account, team member, or group ID of member.<br /><b>email:</b> Email of member."
+										},
+										{
+											"key": "access_level",
+											"value": "editor",
+											"description": "describing what access level we want to give new members.<br /><b>Default: viewer</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Adds specified members to a file."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=sit&members=&members=&access_level=editor",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"add_file_member"
+											],
+											"query": [
+												{
+													"key": "file",
+													"value": "sit"
+												},
+												{
+													"key": "members",
+													"value": ""
+												},
+												{
+													"key": "members",
+													"value": ""
+												},
+												{
+													"key": "access_level",
+													"value": "editor"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller sharing Add Folder Member",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=sit&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&quiet=sit&custom_message=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"add_folder_member"
+									],
+									"query": [
+										{
+											"key": "shared_folder_id",
+											"value": "sit",
+											"description": "(Required) The ID for the shared folder.<br /><i>pattern='[-_0-9a-zA-Z:]+'</i>"
+										},
+										{
+											"key": "members",
+											"value": "{\"member\":\"change_me\",\"access_level\":\"change_me\"}",
+											"description": "(Required) The intended list of members to add.<br /><u>Properties:</u><br /><div>`member` Two different ways to identify a member:<br /><br /><b>dropbox_id:</b> Dropbox account, team member, or group ID of member. <u>Example</u>: dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q<br /><b>email:</b> Email of member. <u>Example</u>: test@example.com</div><br /><div>`access_level` Options for the level of access to grant the member to the shared folder.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Default: viewer</b><br /><ul><li>viewer</li><li>editor</li></ul></div>"
+										},
+										{
+											"key": "members",
+											"value": "{\"member\":\"change_me\",\"access_level\":\"change_me\"}",
+											"description": "(Required) The intended list of members to add.<br /><u>Properties:</u><br /><div>`member` Two different ways to identify a member:<br /><br /><b>dropbox_id:</b> Dropbox account, team member, or group ID of member. <u>Example</u>: dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q<br /><b>email:</b> Email of member. <u>Example</u>: test@example.com</div><br /><div>`access_level` Options for the level of access to grant the member to the shared folder.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Default: viewer</b><br /><ul><li>viewer</li><li>editor</li></ul></div>"
+										},
+										{
+											"key": "quiet",
+											"value": "sit",
+											"description": "Whether added members should not be notified via email and device notifications of your invite.<br /><b>Default: false</b>"
+										},
+										{
+											"key": "custom_message",
+											"value": "sit",
+											"description": "Optional message to display to added members in their invitation."
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Allows to add members to a shared folder."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=sit&members=[object Object]&members=[object Object]&quiet=sit&custom_message=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"add_folder_member"
+											],
+											"query": [
+												{
+													"key": "shared_folder_id",
+													"value": "sit"
+												},
+												{
+													"key": "members",
+													"value": "[object Object]"
+												},
+												{
+													"key": "members",
+													"value": "[object Object]"
+												},
+												{
+													"key": "quiet",
+													"value": "sit"
+												},
+												{
+													"key": "custom_message",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "TIP: 'content_url' which can be used to embed content, can be obtained on this endpoint.",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=sit&direct_only=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"list_shared_links"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "sit",
+											"description": "The path to the file or folder to get the link(s). <b>[path - id - rev]<br />If empty, returns a list of all shared links for the current user.</b>"
+										},
+										{
+											"key": "direct_only",
+											"value": "true",
+											"description": "<u>true:</u> Only the given file or folder shared link will be returned.<br /><u>false:</u> An array containing the shared link and also the shared links to the parent folders.<br /><b>Default: false</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Returns the shared link of a file or folder if `direct_only` is true. Otherwise, returns a list of all shared links that<br /> allow access to the given path - direct links to the given path and links to parent folders of the given path.<br />Links to parent folders can be suppressed by setting `direct_only` to true.<br /><br />For a file to be previewed with the url of <b>content_url</b> it has to be shared and have the access level set to <b>public</b>."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=sit&direct_only=true",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"list_shared_links"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "sit"
+												},
+												{
+													"key": "direct_only",
+													"value": "true"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Services Controller sharing Folders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=sit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":user",
+										"sharing",
+										"list_folders"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "sit",
+											"description": "The maximum number of results to return per request.<br /><b>Default: 1000</b>"
+										}
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "sit",
+											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+										}
+									]
+								},
+								"description": "Return the list of all shared folders the current user has access to."
+							},
+							"response": [
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=sit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"sharing",
+												"list_folders"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "sit"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "sit",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "App Controller generate Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_key",
+							"value": "dolor ad aute incidid"
+						},
+						{
+							"key": "client_secret",
+							"value": "aliquip proident esse nulla"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/get_token_app",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"get_token_app"
+					]
+				},
+				"description": "Obtain a token with credentials, they can be provided in the authorization header or in the body."
+			},
+			"response": [
+				{
+					"name": "Successful operation!",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_key",
+									"value": "dolor ad aute incidid"
+								},
+								{
+									"key": "client_secret",
+									"value": "aliquip proident esse nulla"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/get_token_app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"get_token_app"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_key",
+									"value": "dolor ad aute incidid"
+								},
+								{
+									"key": "client_secret",
+									"value": "aliquip proident esse nulla"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/get_token_app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"get_token_app"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Unauthorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_key",
+									"value": "dolor ad aute incidid"
+								},
+								{
+									"key": "client_secret",
+									"value": "aliquip proident esse nulla"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/get_token_app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"get_token_app"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_key",
+									"value": "dolor ad aute incidid"
+								},
+								{
+									"key": "client_secret",
+									"value": "aliquip proident esse nulla"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/get_token_app",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"get_token_app"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "App Controller refresh Dbx Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "in reprehenderit laboris et ad"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/refresh_dbx_token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"refresh_dbx_token"
+					]
+				},
+				"description": "Manual refresh dropbox access_token and save it to the database."
+			},
+			"response": [
+				{
+					"name": "Successful operation!",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "in reprehenderit laboris et ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh_dbx_token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "in reprehenderit laboris et ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh_dbx_token"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Unauthorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "in reprehenderit laboris et ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh_dbx_token"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "in reprehenderit laboris et ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh_dbx_token"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "App Controller modify Credentials",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "labore ",
+							"description": "(Required) "
+						},
+						{
+							"key": "new_user_name",
+							"value": "ad dolor"
+						},
+						{
+							"key": "client_key",
+							"value": "eiu"
+						},
+						{
+							"key": "client_secret",
+							"value": "Lorem non"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/modify_credentials",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"modify_credentials"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful operation!",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "labore ",
+									"description": "(Required) "
+								},
+								{
+									"key": "new_user_name",
+									"value": "ad dolor"
+								},
+								{
+									"key": "client_key",
+									"value": "eiu"
+								},
+								{
+									"key": "client_secret",
+									"value": "Lorem non"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/modify_credentials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"modify_credentials"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Bad Request",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "labore ",
+									"description": "(Required) "
+								},
+								{
+									"key": "new_user_name",
+									"value": "ad dolor"
+								},
+								{
+									"key": "client_key",
+									"value": "eiu"
+								},
+								{
+									"key": "client_secret",
+									"value": "Lorem non"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/modify_credentials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"modify_credentials"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Unauthorized",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "labore ",
+									"description": "(Required) "
+								},
+								{
+									"key": "new_user_name",
+									"value": "ad dolor"
+								},
+								{
+									"key": "client_key",
+									"value": "eiu"
+								},
+								{
+									"key": "client_secret",
+									"value": "Lorem non"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/modify_credentials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"modify_credentials"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error: Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "labore ",
+									"description": "(Required) "
+								},
+								{
+									"key": "new_user_name",
+									"value": "ad dolor"
+								},
+								{
+									"key": "client_key",
+									"value": "eiu"
+								},
+								{
+									"key": "client_secret",
+									"value": "Lorem non"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/modify_credentials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"modify_credentials"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}

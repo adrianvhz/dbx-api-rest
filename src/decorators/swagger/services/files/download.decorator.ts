@@ -1,5 +1,5 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function FilesDownloadSwagger() {
 	return applyDecorators(
@@ -21,6 +21,13 @@ export function FilesDownloadSwagger() {
 			schema: {
 				type: "string"
 			}
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
+			required: false
 		})
 	)
 }

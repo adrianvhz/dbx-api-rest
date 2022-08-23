@@ -1,5 +1,5 @@
 import { applyDecorators } from "@nestjs/common"
-import { ApiOperation, ApiQuery } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiQuery } from "@nestjs/swagger"
 
 export function FilesGetThumbnailSwagger() {
 	return applyDecorators(
@@ -46,6 +46,13 @@ export function FilesGetThumbnailSwagger() {
 				type: "string",
 				enum: ["strict", "bestfit", "fitone_bestfit"]
 			},
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

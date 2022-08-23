@@ -1,5 +1,5 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiOperation, ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function SharingModifySharedLinkSwagger() {
 	return applyDecorators(
@@ -47,7 +47,7 @@ export function SharingModifySharedLinkSwagger() {
 			name: "expires",
 			description: "<u>For Dropbox Professional y Dropbox Business:</u><br />Expiration time of the shared link. Format: %Y-%m-%dT%H:%M:%SZ<br /><b>By default the link won't expire</b>",
 			schema: {
-				type: "date"
+				type: "string"
 			},
 			required: false
 		}),
@@ -65,6 +65,13 @@ export function SharingModifySharedLinkSwagger() {
 			schema: {
 				type: "string"
 			},
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

@@ -16,9 +16,6 @@ export class LocalAuthGuard extends AuthGuard("local") {
 		if (!req.body.user) {
 			throw new LinkAccountException("user field missing.");
 		}
-		// if (!req.body.domain) {
-		// 	req.body.domain = "default domain"
-		// }
 		return user
 	}
 }

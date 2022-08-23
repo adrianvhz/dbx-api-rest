@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Req, Res, Patch, Delete } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiHideProperty, ApiParam, ApiTags } from "@nestjs/swagger";
 import { ServicesService } from "./services.service";
 import { ServicesAuth } from "src/decorators/authorization/services-auth.decorator";
 import {
@@ -23,6 +23,7 @@ import {
 	SharingListSharedLinksSwagger,
 	SharingListFoldersSwagger } from "src/decorators/swagger/services/sharing";
 import type { Request, Response } from "express"
+
 
 @ApiTags("services")
 @ServicesAuth()

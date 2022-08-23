@@ -1,7 +1,7 @@
 import { DropboxAuth } from "dropbox";
 import fetch from "node-fetch";
 
-export async function getDropboxOAuth2Url(clientId: string, redirectUriForRegister: string) {
+export async function getDropboxOAuth2Url(clientId: string, redirectUriForRegister: string): Promise<string> {
 	return await new DropboxAuth({
 		clientId,
 		fetch
@@ -13,5 +13,5 @@ export async function getDropboxOAuth2Url(clientId: string, redirectUriForRegist
 		null,
 		"none",
 		false
-	);
+	) as string;
 }

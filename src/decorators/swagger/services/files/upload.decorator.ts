@@ -1,5 +1,5 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiBody, ApiConsumes, ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiBody, ApiConsumes, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function FilesUploadSwagger() {
 	return applyDecorators(
@@ -44,6 +44,13 @@ export function FilesUploadSwagger() {
 			name: "autorename",
 			description: "If there's a conflict, as determined by `mode`, have the Dropbox server try to autorename the file to avoid conflict error.<br /><b>Default: false</b>",
 			type: "boolean",
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

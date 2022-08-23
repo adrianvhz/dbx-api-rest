@@ -27,6 +27,9 @@ export class User {
 	})
 	user: string; // email || dni
 
+	@Prop()
+	dbx_account_id: string;
+
 	@Prop({
 		required: true,
 		unique: true

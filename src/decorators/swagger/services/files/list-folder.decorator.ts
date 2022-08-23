@@ -1,12 +1,8 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiOperation, ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiHideProperty, ApiOperation, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function FilesListFolderSwagger() {
 	return applyDecorators(
-		ApiResponse({
-			status: HttpStatus.OK,
-			description: "Successful operation!"
-		}),
 		ApiResponse({
 			status: HttpStatus.CONFLICT,
 			description: "Error: Conflict"
@@ -37,6 +33,13 @@ export function FilesListFolderSwagger() {
 				type: "integer",
 				format: "int32"
 			},
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

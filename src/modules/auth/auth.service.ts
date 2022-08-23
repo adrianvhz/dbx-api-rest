@@ -3,21 +3,24 @@ import { ConfigService } from "@nestjs/config";
 import { UsersService } from "src/modules/users/users.service";
 import { getDropboxOAuth2Url } from "src/lib/getDropboxOAuth2Url";
 import { generateSecureRandomKey } from "src/lib/generateSecureRandomKey";
-import { Dropbox } from "dropbox";
+import { Dropbox, DropboxAuth } from "dropbox";
 import { AccountAlreadyInactive } from "src/exceptions/UserAlreadyInactiveException";
-import fetch from "node-fetch";
+import node_fetch from "node-fetch";
 import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
 import type { Request, Response } from "express"
+import { expiresToken } from "src/lib/expiresToken";
 
 
 @Injectable()
-export class AuthService
-{
+export class AuthService {
+	private readonly _configDbx: IDropboxConfig;
+
 	constructor(
 		private readonly configService: ConfigService,
-		private readonly usersService: UsersService,
-		// private readonly usersHistoryService: UsersHistoryService
-	) {}
+		private readonly usersService: UsersService
+	) {
+		this._configDbx = this.configService.get<IDropboxConfig>("dropbox");
+	}
 
 	async validateUser(userField: string) {
 		/**
@@ -32,14 +35,28 @@ export class AuthService
 	}
 
 	async linkDbxAccount(req: Request, res: Response) {
-		const dropboxConfig = this.configService.get<IDropboxConfig>("dropbox");
-
 		var user = req.user;
 		var isNew = false;
-		
-		// Create user if not exists
+	
+		/**
+		 * For accounts registered in inactive status
+		 */
 		// @ts-ignore
-		if (user === "null") {
+		if (user !== "null") {
+			if (user.history.status === "inactive") {
+				user.history.status = "active";
+				user.history.save();
+				return;
+			}
+		}
+		// Create user if not exists
+		/** FOR SECOND METHOD - API SENDS DBX FORM */
+		else {
+			if (req.body.register) {
+				res.redirect(await getDropboxOAuth2Url(this._configDbx.clientId, this._configDbx.redirectUri));
+				return;
+			}
+			/** PRINCIPAL METHOD */
 			user = await this.usersService.create({
 				user: req.body.user,
 				client_key: await generateSecureRandomKey(9),
@@ -47,22 +64,13 @@ export class AuthService
 			})
 			isNew = true;
 		}
-		/**
-		 * For accounts registered in inactive status
-		 */
-		if (user.history.status === "inactive") {
-			user.history.status = "active";
-			/**
-			 * 'await' is not necessary, and a response is received faster.
-			 */
-			user.history.save();
-		}
+	
 		res.status(200).json({
 			credentials: {
 				client_key: user.client_key,
 				client_secret: user.client_secret
 			},                                                                       
-			OAUTH2_AUTHORIZE: isNew ? await getDropboxOAuth2Url(dropboxConfig.clientId, req.body.domain) : undefined,
+			OAUTH2_AUTHORIZE: isNew ? await getDropboxOAuth2Url(this._configDbx.clientId, req.body.domain) : undefined,
 			isNew: isNew || undefined
 		})
 	}
@@ -86,7 +94,6 @@ export class AuthService
 				path: "history"
 			});
 		if (user.history.status === "inactive") throw new AccountAlreadyInactive();
-		
 		await user.history.updateOne({
 			$set: {
 				status: "inactive",
@@ -113,21 +120,32 @@ export class AuthService
 
 
 
-   /** CURRENTLY INACTIVE
-   * FOR REGISTER, IS FOR SECOND METHOD WHERE API SEND DROPBOX FORM.
-   * It has to be adapted to the current system that I'm not familiar with.
-   */
    async apiRegister(req: Request, res: Response) {
-      var data = await fetch(process.env.SIGN_IN_URI, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-         },
-         body: new URLSearchParams({
-            user: req.cookies.user,
-            code: req.query.code as string
-         })
-      })
-      res.json(await data.json());
+		var username = JSON.parse(req.cookies.SESSION_ID).user;
+		var code = req.query.code as string;
+		var tokens = (await new DropboxAuth({
+			clientId: this._configDbx.clientId,
+			clientSecret: this._configDbx.clientSecret,
+			fetch: node_fetch
+		})
+			.getAccessTokenFromCode(this._configDbx.redirectUri, code)).result as any
+		var email = (await new Dropbox({ accessToken: tokens.access_token }).usersGetCurrentAccount()).result.email;
+		const user = await this.usersService.create({
+			user: username,
+			dbx_account_id: tokens.account_id,
+			client_key: await generateSecureRandomKey(9),
+			client_secret: await generateSecureRandomKey(9),
+			tk_acs: tokens.access_token,
+			tk_rfsh: tokens.refresh_token,
+			tk_acs_expires: expiresToken(),
+			dbx_email: email
+		});
+		res.json({
+			credentials: {
+				client_key: user.client_key,
+				client_secret: user.client_secret
+			},
+			isNew: true
+		})
 	}
 }

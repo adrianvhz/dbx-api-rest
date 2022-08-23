@@ -1,5 +1,5 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiOperation, ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function FilesMoveSwagger() {
 	return applyDecorators(
@@ -23,6 +23,13 @@ export function FilesMoveSwagger() {
 			schema: {
 				type: "boolean"
 			},
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

@@ -18,7 +18,7 @@ const initSwagger = (app: NestExpressApplication) => {
 	}, "manage-users")
 	.addBearerAuth({
 		type: "http",
-		scheme: "Bearer",
+		scheme: "bearer",
 		bearerFormat: "JWT",
 		name: "auth_services",
 		in: "header",

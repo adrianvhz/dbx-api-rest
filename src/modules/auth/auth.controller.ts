@@ -1,5 +1,5 @@
-import { ApiTags } from "@nestjs/swagger";
-import { Controller, Post, UseGuards, Req, Res, Put, Body } from "@nestjs/common";
+import { ApiExcludeEndpoint, ApiTags } from "@nestjs/swagger";
+import { Controller, Post, UseGuards, Req, Res, Put, Body, Get } from "@nestjs/common";
 import { AuthService } from "src/modules/auth/auth.service";
 import { LocalAuthGuard } from "../../guards/local-auth.guard";
 import { LinkAccountSwagger, UnlinkAccountSwagger } from "src/decorators/swagger/auth";
@@ -21,16 +21,16 @@ export class AuthController {
 	@UnlinkAccountSwagger()
 	@Put("unlink_account")
 	async unlinkAccount(@Res() res: Response, @Body() body: any) {
-		return this.authService.unlinkAccount(res, body)
+		this.authService.unlinkAccount(res, body)
 	}
 
 
-	/** -INACTIVE-
+	/** -LINK DROPBOX ACCOUNT FROM API-
 	* SECOND METHOD
 	*/
-	// @ApiExcludeEndpoint()
-	// @Get("register")
-	// async register(@Req() req: Request, @Res() res: Response) {
-	//   this.authService.register(req, res);
-	// }
+	@ApiExcludeEndpoint()
+	@Get("register")
+	async apiRegister(@Req() req: Request, @Res() res: Response) {
+	  this.authService.apiRegister(req, res);
+	}
 }

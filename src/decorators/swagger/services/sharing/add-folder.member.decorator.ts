@@ -1,5 +1,5 @@
 import { applyDecorators } from "@nestjs/common"
-import { ApiOperation, ApiQuery } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiQuery } from "@nestjs/swagger"
 
 export function SharingAddFolderMemberSwagger() {
 	return applyDecorators(
@@ -47,6 +47,13 @@ export function SharingAddFolderMemberSwagger() {
 			schema: {
 				type: "string"
 			},
+			required: false
+		}),
+		ApiParam({
+			name: "user",
+			description: "<strike>user path is not required in swagger</strike><br />(leave it blank)",
+			deprecated: true,
+			schema: { type: "string" },
 			required: false
 		})
 	)

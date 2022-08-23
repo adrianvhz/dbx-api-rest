@@ -19,7 +19,7 @@ export default () => ({
 		clientId: process.env.APP_KEY,
 		clientSecret: process.env.APP_SECRET,
 		redirectUri: process.env.REDIRECT_URI,
-		redirectUriForRegister: process.env.REDIRECT_URI_FOR_REGISTER
+		// redirectUriForRegister: process.env.REDIRECT_URI_FOR_REGISTER
 	},
 
 	enviroment: process.env.NODE_ENV,

@@ -7,6 +7,9 @@ export class CreateUserDto
 	@ApiProperty({ type: "string", example: "test" })
 	user: string;
 
+	@ApiProperty({ type: "string", example: "dbid:AABtkbpNybe_XSwvzm-KvwOItE_Zw53J3WM" })
+	dbx_account_id?: string;
+
 	@IsNotEmpty()
 	@ApiProperty({ type: "string", example: "tl95hoxt6ris6r0" })
 	client_key?: string;
@@ -20,6 +23,9 @@ export class CreateUserDto
 
 	@ApiProperty({ type: "string", example: "LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I" })
 	tk_rfsh?: string;
+
+	@ApiProperty({ type: "string" })
+	tk_acs_expires?: Date;
 
 	@ApiProperty({ type: "string", example: "test@yahoo.com" })
 	dbx_email?: string;
