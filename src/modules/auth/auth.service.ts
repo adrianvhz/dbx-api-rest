@@ -6,9 +6,9 @@ import { generateSecureRandomKey } from "src/lib/generateSecureRandomKey";
 import { Dropbox, DropboxAuth } from "dropbox";
 import { AccountAlreadyInactive } from "src/exceptions/UserAlreadyInactiveException";
 import node_fetch from "node-fetch";
+import { expiresToken } from "src/lib/expiresToken";
 import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
 import type { Request, Response } from "express"
-import { expiresToken } from "src/lib/expiresToken";
 
 
 @Injectable()
@@ -45,16 +45,15 @@ export class AuthService {
 		if (user !== "null") {
 			if (user.history.status === "inactive") {
 				user.history.status = "active";
-				user.history.save();
-				return;
+				return user.history.save();
+				
 			}
 		}
 		// Create user if not exists
 		/** FOR SECOND METHOD - API SENDS DBX FORM */
 		else {
 			if (req.body.register) {
-				res.redirect(await getDropboxOAuth2Url(this._configDbx.clientId, this._configDbx.redirectUri));
-				return;
+				return res.redirect(await getDropboxOAuth2Url(this._configDbx.clientId, `${req.protocol}://${req.get("host")}/auth/register`));
 			}
 			/** PRINCIPAL METHOD */
 			user = await this.usersService.create({
@@ -119,7 +118,6 @@ export class AuthService {
 
 
 
-
    async apiRegister(req: Request, res: Response) {
 		var username = JSON.parse(req.cookies.SESSION_ID).user;
 		var code = req.query.code as string;
@@ -128,9 +126,9 @@ export class AuthService {
 			clientSecret: this._configDbx.clientSecret,
 			fetch: node_fetch
 		})
-			.getAccessTokenFromCode(this._configDbx.redirectUri, code)).result as any
+			.getAccessTokenFromCode(`${req.protocol}://${req.get("host")}${req.path}`, code)).result as any
 		var email = (await new Dropbox({ accessToken: tokens.access_token }).usersGetCurrentAccount()).result.email;
-		const user = await this.usersService.create({
+		var user = await this.usersService.create({
 			user: username,
 			dbx_account_id: tokens.account_id,
 			client_key: await generateSecureRandomKey(9),
@@ -140,6 +138,7 @@ export class AuthService {
 			tk_acs_expires: expiresToken(),
 			dbx_email: email
 		});
+
 		res.json({
 			credentials: {
 				client_key: user.client_key,

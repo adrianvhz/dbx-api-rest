@@ -6,6 +6,7 @@ import { Request, Response, NextFunction } from "express";
 import * as passport from "passport"
 import node_fetch from "node-fetch"
 import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
+import { expiresToken } from "src/lib/expiresToken";
 
 @Injectable()
 export class DropboxAuthMiddleware implements NestMiddleware {
@@ -46,10 +47,8 @@ export class DropboxAuthMiddleware implements NestMiddleware {
 
 			/** Update access_token in db */
 			if (expired) {
-				var expires = new Date();
-				expires.setHours(expires.getHours() + 4);
 				user.tk_acs = this._auth.getAccessToken();
-				user.tk_acs_expires = expires;
+				user.tk_acs_expires = expiresToken();
 				user.save().then(() => {
 					console.log(`The access token of the user ${user.user} has been refreshed and updated in the database.`)
 				});

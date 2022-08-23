@@ -4,8 +4,9 @@ import { UsersService } from './modules/users/users.service';
 import { ConfigService } from '@nestjs/config';
 import { encodeBasicAuth } from './lib/encodeBasicAuth';
 import { decodeBasicAuth } from './lib/decodeBasicAuth';
-import fetch from "node-fetch";
+import { expiresToken } from './lib/expiresToken';
 import { CredentialsBodyDto, ModifyCredentialsDto } from './common/dto';
+import fetch from "node-fetch";
 import type { IDropboxConfig } from './common/interfaces/IDropboxConfig';
 
 @Injectable()
@@ -67,8 +68,7 @@ export class AppService {
 				refresh_token: user.tk_rfsh
 			})
 		})).json();
-		var exp_date = new Date();
-		exp_date.setHours(exp_date.getHours() + 4);
+		var exp_date = expiresToken();
 		user.tk_acs = data.access_token;
 		user.tk_acs_expires = exp_date;
 		user.save()

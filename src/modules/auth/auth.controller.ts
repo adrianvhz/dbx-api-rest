@@ -4,6 +4,7 @@ import { AuthService } from "src/modules/auth/auth.service";
 import { LocalAuthGuard } from "../../guards/local-auth.guard";
 import { LinkAccountSwagger, UnlinkAccountSwagger } from "src/decorators/swagger/auth";
 import type { Request, Response } from "express";
+import url from "whatwg-url"
 
 
 @ApiTags("auth")
@@ -31,6 +32,6 @@ export class AuthController {
 	@ApiExcludeEndpoint()
 	@Get("register")
 	async apiRegister(@Req() req: Request, @Res() res: Response) {
-	  this.authService.apiRegister(req, res);
+		this.authService.apiRegister(req, res);
 	}
 }
