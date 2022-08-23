@@ -14,10 +14,10 @@ export class UserDocDto {
 	client_secret: string;
 
 	@ApiProperty({ example: "sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL" })
-	tk_acs: string;
+	access_token: string;
 
 	@ApiProperty({ example: "LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I" })
-	tk_rfsh: string;
+	token_refresh: string;
 
 	@ApiProperty({ example: "test@yahoo.com" })
 	dbx_email: string;

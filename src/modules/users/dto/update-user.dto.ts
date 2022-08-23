@@ -5,16 +5,22 @@ export class UpdateUserDto {
 	user: string;
 
 	@ApiProperty()
+	dbx_account_id?: string;
+
+	@ApiProperty()
 	client_key?: string;
 
 	@ApiProperty()
 	client_secret?: string;
 
 	@ApiProperty()
-	tk_acs?: string;
+	access_token?: string;
 
 	@ApiProperty()
-	tk_rfsh?: string;
+	refresh_token?: string;
+
+	@ApiProperty({ type: "string" })
+	access_token_expires?: Date;
 
 	@ApiProperty()
 	dbx_email?: string;

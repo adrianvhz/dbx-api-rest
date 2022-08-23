@@ -65,12 +65,12 @@ export class AppService {
 			},
 			body: new URLSearchParams({
 				grant_type: "refresh_token",
-				refresh_token: user.tk_rfsh
+				refresh_token: user.refresh_token
 			})
 		})).json();
 		var exp_date = expiresToken();
-		user.tk_acs = data.access_token;
-		user.tk_acs_expires = exp_date;
+		user.access_token = data.access_token;
+		user.access_token_expires = exp_date;
 		user.save()
 		return {
 			message: "access_token has been successfully refreshed!",

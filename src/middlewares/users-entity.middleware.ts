@@ -1,15 +1,14 @@
 import { UserSchema } from "src/modules/users/schemas/user.schema";
-import { UsersHistoryService } from "src/modules/users/users-history.service";
 
 // if (process.env.mode === "DEVELOPMENT") {}
-export function usersEntityMiddleware(usersHistoryService: UsersHistoryService) {
+export function usersEntityMiddleware() {
 	const schema = UserSchema;
 
-	schema.post("remove", function(doc) {
-		console.log("user / user-history " + doc.user + " removed!")
-		usersHistoryService.delete(doc.user);
-		// next()
-	});
+	// schema.post("remove", function(doc) {
+	// 	console.log("user / user-history " + doc.user + " removed!")
+	// 	usersHistoryService.delete(doc.user);
+	// 	// next()
+	// });
 
 	schema.post("findOneAndUpdate", async function(doc) {
 		if (!doc) return;
@@ -56,12 +55,12 @@ export function usersEntityMiddleware(usersHistoryService: UsersHistoryService) 
 				doc.save();
 			}
 
-			var oldUser = this.getQuery().user;
-			var newUser = oUpdate.user;
-			if (oldUser !== newUser) {
-				console.log("user-history has been updated!")
-				await usersHistoryService.update(oldUser, { user: newUser })
-			}
+			// var oldUser = this.getQuery().user;
+			// var newUser = oUpdate.user;
+			// // if (oldUser !== newUser) {
+			// // 	console.log("user-history has been updated!")
+			// // 	await usersHistoryService.update(oldUser, { user: newUser })
+			// // }
 		}
 	});
 

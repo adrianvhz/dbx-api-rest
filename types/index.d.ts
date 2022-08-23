@@ -11,12 +11,6 @@ declare global {
 	}
 	interface resultOptions {
 		/**
-		* Whether it should be populated with history.
-		* 
-		* Default: `false`
-		*/
-		history?: boolean;
-		/**
 		* Whether it should throw an error when a user is not found.
 		* 
 		* Default: `true`

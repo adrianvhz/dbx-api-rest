@@ -23,13 +23,13 @@ export class UsersController {
 	@UsersFindAllSwagger()
 	@Get()
 	findAllUsers(@Query("history") history: string) {
-		return this.usersService.findAll(history && history === "true");
+		return this.usersService.findAll();
 	}
 
 	@UsersFindOneSwagger()
 	@Get(':user')
 	findOneUser(@Param("user") user: string, @Query("history") history: string) {
-		return this.usersService.findOne(user, { history: history && history === "true" });
+		return this.usersService.findOne(user);
 	}
 
 	@UserCreateSwagger()

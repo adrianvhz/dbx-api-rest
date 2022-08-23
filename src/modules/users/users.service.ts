@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, UpdateQuery } from "mongoose";
-import { UsersHistoryService } from './users-history.service';
 import { User, UserDoc } from './schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -11,26 +10,14 @@ import { UserAlreadyExistsException } from 'src/exceptions/UserAlreadyExistsExce
 @Injectable()
 export class UsersService {
 	constructor(
-		@InjectModel(User.name) private userModel: Model<UserDoc>,
-		private usersHistoryService: UsersHistoryService
+		@InjectModel(User.name) private userModel: Model<UserDoc>
 	) {}
 
 	/** hint
 	* customizable to res.json() for alternative performance
 	*/
-	async findAll(history: boolean): Promise<UserDoc[]> {
-		var users: UserDoc[];
-		if (history) {
-			users = await this.userModel.find().
-				populate({
-					path: "history",
-					select: "status dropbox_emails -_id"
-				})
-		}
-		else {
-			users =  await this.userModel.find();
-		}
-		return users;
+	async findAll(): Promise<UserDoc[]> {
+		return await this.userModel.find();
 	}
 
 	async findOne(userParam: string, options: resultOptions = { throwError: true }): Promise<UserDoc> | never {
@@ -41,19 +28,12 @@ export class UsersService {
 		/**
 		 * Default options.history === undefined == false
 		 */
-		if (options.history) {
-			return user.
-				populate({
-					path: "history",
-					select: "status dropbox_emails -_id"
-				})
-		}
 		else {
 			return user;
 		}
 	}
 
-	async create(createUserDto: CreateUserDto): Promise<UserDoc> {
+	async create(createUserDto: CreateUserDto | UserDoc): Promise<UserDoc> {
 		var exists = await this.userModel.exists({
 			$or: [
 				{ user: createUserDto.user },
@@ -62,13 +42,13 @@ export class UsersService {
 		});
 		if (exists) throw new UserAlreadyExistsException();
 		var user = new this.userModel({
-			...createUserDto
+			...createUserDto,
 		})
 		await user.validate();
-		user.history = await this.usersHistoryService.create({
-			user: createUserDto.user,
-			dropbox_emails: []
-		});
+		// user.history = await this.usersHistoryService.create({
+		// 	user: createUserDto.user,
+		// 	dropbox_emails: []
+		// });
 		await user.save();
 		return user;
 	}

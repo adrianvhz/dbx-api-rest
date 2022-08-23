@@ -34,10 +34,10 @@ export class DropboxAuthMiddleware implements NestMiddleware {
 				return next(err)
 			}
 			// req.user = user;
-			this._auth.setAccessToken(user.tk_acs);
-			this._auth.setRefreshToken(user.tk_rfsh);
+			this._auth.setAccessToken(user.access_token);
+			this._auth.setRefreshToken(user.refresh_token);
 
-			var expired = user.tk_acs_expires < new Date();
+			var expired = user.access_token_expires < new Date();
 			if (expired) await this._auth.refreshAccessToken();
 
 			req.dbx = new Dropbox({
@@ -47,8 +47,8 @@ export class DropboxAuthMiddleware implements NestMiddleware {
 
 			/** Update access_token in db */
 			if (expired) {
-				user.tk_acs = this._auth.getAccessToken();
-				user.tk_acs_expires = expiresToken();
+				user.access_token = this._auth.getAccessToken();
+				user.access_token_expires = expiresToken();
 				user.save().then(() => {
 					console.log(`The access token of the user ${user.user} has been refreshed and updated in the database.`)
 				});

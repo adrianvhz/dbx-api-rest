@@ -1,6 +1,5 @@
 import { Schema, SchemaFactory, Prop, SchemaOptions } from "@nestjs/mongoose";
-import { Document, Types } from "mongoose"
-import { UserHistory, UserHistoryDoc } from "./user-history.schema";
+import { Document } from "mongoose"
 
 export type UserDoc = User & Document;
 
@@ -28,36 +27,38 @@ export class User {
 	user: string; // email || dni
 
 	@Prop()
-	dbx_account_id: string;
+	dbx_account_id?: string;
 
 	@Prop({
 		required: true,
 		unique: true
 	})
-	client_key: string;
+	client_key?: string;
 
 	@Prop({
 		required: true
 	})
-	client_secret: string;
+	client_secret?: string;
 
 	@Prop()
-	tk_acs: string;
+	access_token?: string;
 
 	@Prop()
-	tk_rfsh: string;
+	refresh_token?: string;
 
 	@Prop()
-	tk_acs_expires: Date;
+	access_token_expires?: Date;
 
 	@Prop()
-	dbx_email: string;
+	dbx_email?: string;
 
 	@Prop({
-		type: Types.ObjectId,
-		ref: UserHistory.name
+		default: "active"
 	})
-	history: UserHistoryDoc
+	status?: string
+
+	@Prop({ type: [String] })
+	history_dbx_emails?: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
