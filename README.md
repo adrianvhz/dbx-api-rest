@@ -4,12 +4,12 @@
 
 1. Clonar repositorio.
 
-```bash
+```sh
 $ git clone <URL>
 ```
 2. Crear `.env` en la raíz y copiar las variables de `.env.example`
 
-```bash
+```sh
 $ cd dbx-api
 $ copy .example.env .env
 ```
@@ -18,10 +18,9 @@ $ copy .example.env .env
 ```bash
 $ npm install
 ```
-
 4. **Opcional.** Actualizar `src/main.ts` de ser necesario.
 
-```js
+```ts
 const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	const config = app.get(ConfigService);
 	const NODE_ENV = config.get<string>("enviroment");
@@ -38,7 +37,6 @@ const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	....
 }
 ```
-
 5. Iniciar.
 
 ```bash
@@ -48,7 +46,7 @@ $ npm run start:prod
 
 Realizar una prueba de conexión rapida.
 
-```bash
+```s
 $ curl.exe -X POST -H "Content-type: application/json" -d '{\"user\":\"test\",\"domain\":\"http:\\example.com\"}' 'https://<hostname>/auth/link_account'
 ```
 
@@ -64,6 +62,25 @@ $ curl.exe -X POST -H "Content-type: application/json" -d '{\"user\":\"test\",\"
 | `APP_SECRET`         | El app secret de tu dropbox app.           |
 | `URL_SWAGGER_APP`    | **Opcional** Host principal para Swagger.  |
 | `URL_SWAGGER_SERVER` | **Opcional** Host secundario para Swagger. |
+
+## Dropbox Scopes
+
+#### Account Info
+&#9745; account_info.write\
+&#9745; account_info.read
+
+#### Files and folders
+&#9745; files.metadata.write\
+&#9745; files.metadata.read\
+&#9745; files.content.write\
+&#9745; files.content.read
+
+#### Collaboration
+&#9745; sharing.read\
+&#9745; file_requests.write\
+&#9745; file_requests.read\
+&#9745; contacts.write\
+&#9745; contacts.read
 
 ## Pasos
 

@@ -78,7 +78,7 @@ export class AuthService {
 				client_key: user.client_key,
 				client_secret: user.client_secret
 			},                                                                       
-			status: user.status,
+			status: user.status.toUpperCase(),
 			OAUTH2_AUTHORIZE: user.status === "inactive" && !req.body.register ? await getDropboxOAuth2Url(this._configDbx.clientId, req.body.domain) : undefined,
 			isNew: isNew || undefined
 		})
@@ -129,30 +129,29 @@ export class AuthService {
 		var code = req.query.code as string;
 		var tokens = (await this._dbx_auth.getAccessTokenFromCode(`${req.protocol}://${req.get("host")}${req.path}`, code)).result as any
 		var email = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result.email;
+		var dbx_data = {
+			dbx_account_id: tokens.account_id,
+			access_token: tokens.access_token,
+			refresh_token: tokens.refresh_token,
+			access_token_expires: expiresToken(),
+			dbx_email: email,
+			history_dbx_emails: [email]
+		}
 
 		if (req.cookies.action === "update") {
 			await this.usersService.update(username, {
-				dbx_account_id: tokens.account_id,
-				access_token: tokens.access_token,
-				refresh_token: tokens.refresh_token,
-				access_token_expires: expiresToken(),
-				dbx_email: email,
-				status: "active",
-				history_dbx_emails: [email]
+				...dbx_data,
+				status: "active"
 			})
 		}
+		
 	// if req.cookie.action === "create"
 		else {
 			await this.usersService.create({
 				user: username,
-				dbx_account_id: tokens.account_id,
+				...dbx_data,
 				client_key: await generateSecureRandomKey(9),
 				client_secret: await generateSecureRandomKey(9),
-				access_token: tokens.access_token,
-				refresh_token: tokens.refresh_token,
-				access_token_expires: expiresToken(),
-				dbx_email: email,
-				history_dbx_emails: [email]
 			});
 		}
 		return res.redirect(308, req.cookies.redirect_to)

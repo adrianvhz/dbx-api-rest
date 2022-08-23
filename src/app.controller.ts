@@ -6,7 +6,8 @@ import {
 	Post,
 	Patch,
 	Req,
-	Body } from '@nestjs/common';
+	Body, 
+	Get} from '@nestjs/common';
 	import {
 		GetTokenSwagger,
 		ModifyCredentialsSwagger,
@@ -44,5 +45,11 @@ export class AppController {
 	@Patch("modify_credentials")
 	async modifyCredentials(@Body() body: ModifyCredentialsDto) {
 		return this.appService.modifyCredentials(body);
+	}
+
+	/** THIS IS A EXAMPLE VIEW FOR AUTH REGISTER REDIRECT - SECOND METHOD - DELETE IT IN PRODUCTION */
+	@Get("dashboard")
+	dashboardView() {
+		return "<p>Aca seria donde se redirigio según el parametro 'domain' proporcionado en el body.</p>"
 	}
 }
