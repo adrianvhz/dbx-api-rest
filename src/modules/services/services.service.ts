@@ -8,6 +8,7 @@ import * as mime from "mime/lite"
 import stream from "stream"
 import type { Request, Response } from "express";
 import { Dropbox } from 'dropbox';
+import { fileNameFromUrl } from 'src/lib/getFilenameFromUrl';
 
 @Injectable()
 export class ServicesService {
@@ -30,9 +31,6 @@ export class ServicesService {
 
 	// here 22:25 -DELETE
 	async filesSearch(dbx: Dropbox, query: IQuery) {
-		if (query.file_extensions && !Array.isArray(query.file_extensions)) {
-			query.file_extensions = new Array(query.file_extensions);
-		}
 		var files = await dbx.filesSearchV2({
 			query: query.query,
 			options: {
@@ -41,25 +39,21 @@ export class ServicesService {
 				order_by: query.order_by && {
 					".tag": query.order_by
 				},
-				// file_categories: req.query.file_categories && (req.query.file_categories as any).map((el: string) => {
-				//     return {
-				//         ".tag": el
-				//     }
-				// }),
 				filename_only: query.filename_only && query.filename_only === "true",
-				file_extensions: query.file_extensions && query.file_extensions
+				file_categories: query.file_categories && query.file_categories.map((el: string) => ({ ".tag": el })),
+				file_extensions: query.file_extensions
 			}
 		});
 
 		return files.result
 	}
 
-	async filesGetMetadata(req: Request) {
-		return (
-			await req.dbx.filesGetMetadata({
-				path: req.query.path as string
-			})
-		).result
+	async filesGetMetadata(dbx: Dropbox, query: IQuery) {
+		var files = await dbx.filesGetMetadata({
+			path: query.path
+		});
+
+		return files.result
 	}
 
 	async getFilePreview(req: Request, res: Response) {
@@ -200,59 +194,58 @@ export class ServicesService {
 		}
 	}
 
-	async filesUploadFileFromUrl(req: Request) {
-		const filename = path.basename(req.query.url as string);
-		return (
-			await req.dbx.filesSaveUrl({
-				path: req.query.path ? req.query.path as string : `/${filename}`,
-				url: req.query.url as string
-			})
-		).result;
+	async filesUploadFileFromUrl(dbx: Dropbox, query: IQuery) {
+		var filename = fileNameFromUrl(query.url);
+		var fileMetadata = await dbx.filesSaveUrl({
+			path: query.path ? (query.path.includes(".") ? query.path : `${query.path}/${filename}`) : `/${filename}`,
+			url: query.url
+		});
+
+		return fileMetadata.result
 	}
 
-	// also check copy_reference/get-save
-	async filesCopy(req: Request) {
-		return (
-			await req.dbx.filesCopyV2({
-				from_path: req.query.from_path as string,
-				to_path: req.query.to_path as string,
-				autorename: req.query.autorename && req.query.autorename === "true"
-			})
-		)
+	async filesCopy(dbx: Dropbox, query: IQuery) {
+		var fileMetadata = await dbx.filesCopyV2({
+			from_path: query.from_path,
+			to_path: query.to_path,
+			autorename: query.autorename && query.autorename === "true"
+		});
+
+		return fileMetadata.result.metadata
 	}
 
-	async filesMove(req: Request) {
+	async filesMove(dbx: Dropbox, query: IQuery) {
 		return (
-			await req.dbx.filesMoveV2({
-				from_path: req.query.from_path as string,
-				to_path: req.query.to_path as string,
-				autorename: req.query.autorename && req.query.autorename === "true"
-			})
-		)
-	}
-
-	async filesDelete(req: Request) {
-		return (
-			await req.dbx.filesDeleteV2({
-				path: req.query.path as string
+			await dbx.filesMoveV2({
+				from_path: query.from_path as string,
+				to_path: query.to_path as string,
+				autorename: query.autorename && query.autorename === "true"
 			})
 		)
 	}
 
-	async filesGetThumbnail(req: Request) {
+	async filesDelete(dbx: Dropbox, query: IQuery) {
 		return (
-			await req.dbx.filesGetThumbnailV2({
-				resource: req.query.resource && {
+			await dbx.filesDeleteV2({
+				path: query.path as string
+			})
+		)
+	}
+
+	async filesGetThumbnail(dbx: Dropbox, query: IQuery) {
+		return (
+			await dbx.filesGetThumbnailV2({
+				resource: query.resource && {
 					".tag": "path",
 					path: ""
 				},
-				format: req.query.format && {
+				format: query.format && {
 					".tag": "jpeg"
 				},
-				mode: req.query.mode && {
+				mode: query.mode && {
 					".tag": "bestfit"
 				},
-				size: req.query.mode && {
+				size: query.mode && {
 					".tag": "w1024h768"
 				}
 			})
@@ -309,38 +302,38 @@ export class ServicesService {
 		}
 	}
 
-	async sharingModifySharedLink(req: Request) {
+	async sharingModifySharedLink(dbx: Dropbox, query: IQuery) {
 		return (
-			await req.dbx.sharingModifySharedLinkSettings({
-				url: req.query.url as string,
+			await dbx.sharingModifySharedLinkSettings({
+				url: query.url as string,
 				settings: { // @ts-ignore
-					access: req.query.access && {
-						".tag": req.query.access
+					access: query.access && {
+						".tag": query.access
 					}, // @ts-ignore
-					audience: req.query.audience && {
-						".tag": req.query.audience
+					audience: query.audience && {
+						".tag": query.audience
 					},
-					allow_download: req.query.allow_download && req.query.allow_download === "true",
-					require_password: req.query.require_password && req.query.require_password === "true",
-					link_password: req.query.link_password as string,
-					expires: req.query.expires as string
+					allow_download: query.allow_download && query.allow_download === "true",
+					require_password: query.require_password && query.require_password === "true",
+					link_password: query.link_password as string,
+					expires: query.expires as string
 				}
 			})
 		).result
 	}
 		
-	async sharingAddFileMember(req: Request) {
-		if (req.query.members && !Array.isArray(req.query.members)) {
-			req.query.members = new Array(req.query.members as any);
+	async sharingAddFileMember(dbx: Dropbox, query: IQuery) {
+		if (query.members && !Array.isArray(query.members)) {
+			query.members = new Array(query.members as any);
 		}
 
 		return (
-			await req.dbx.sharingAddFileMember({
-				file: req.query.file as string, // @ts-ignore
-				access_level: req.query.access_level && {
-					".tag": req.query.access_level
+			await dbx.sharingAddFileMember({
+				file: query.file, // @ts-ignore
+				access_level: query.access_level && {
+					".tag": query.access_level
 				}, // @ts-ignore
-				members: req.query.members.map((el: string) => {
+				members: query.members.map((el: string) => {
 					var isId = el.startsWith("id:");
 					return {
 						".tag": isId ? "dropbox_id" : "email",
@@ -351,17 +344,16 @@ export class ServicesService {
 		).result
 	}
 
-	async sharingAddFolderMember(req: Request) {
-		if (req.query.members && !Array.isArray(req.query.members)) {
-			req.query.members = new Array(req.query.members as any);
+	async sharingAddFolderMember(dbx: Dropbox, query: IQuery) {
+		if (query.members && !Array.isArray(query.members)) {
+			query.members = new Array(query.members as any);
 		}
 		
-		await req.dbx.sharingAddFolderMember({
-			shared_folder_id: req.query.shared_folder_id as string, // @ts-ignore
-			members: req.query.members.map((object: any) => {
+		await dbx.sharingAddFolderMember({
+			shared_folder_id: query.shared_folder_id as string, // @ts-ignore
+			members: query.members.map((object: any) => {
 				const { member: memberSelector, access_level } = JSON.parse(object);
 				var isId = memberSelector.startsWith("id:")
-				console.log(memberSelector, access_level)
 				return {
 					access_level: {
 						".tag": access_level
@@ -372,17 +364,18 @@ export class ServicesService {
 					}
 				}
 			}),
-			quiet: req.query.quiet && req.query.quiet === "true",
-			custom_message: req.query.custom_message as string
-		})
+			quiet: query.quiet && query.quiet === "true",
+			custom_message: query.custom_message as string
+		});
+
 		return "Successful operation!"
 	}
 
-	async sharingListSharedLinks(req: Request) {
+	async sharingListSharedLinks(dbx: Dropbox, query: IQuery) {
 		const links = (
-			await req.dbx.sharingListSharedLinks({
-				path: req.query.path as string,
-				direct_only: req.query.direct_only && req.query.direct_only === "true"
+			await dbx.sharingListSharedLinks({
+				path: query.path as string,
+				direct_only: query.direct_only && query.direct_only === "true"
 			})
 		).result
 		if (links.links.length === 1) {
@@ -399,9 +392,9 @@ export class ServicesService {
 		}
 	}
 
-	async sharingListFolders(req: Request) {
-		const folder = (await req.dbx.sharingListFolders({
-				limit: req.query.limit && +req.query.limit
+	async sharingListFolders(dbx: Dropbox, query: IQuery) {
+		const folder = (await dbx.sharingListFolders({
+				limit: query.limit && +query.limit
 		})).result
 		return folder;
 	}

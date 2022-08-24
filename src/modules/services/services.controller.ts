@@ -23,11 +23,11 @@ import {
 	SharingListSharedLinksSwagger,
 	SharingListFoldersSwagger } from "src/decorators/swagger/services/sharing";
 import type { Request, Response } from "express"
-import { HttpExceptionFilter } from "src/filters/http-execption.filter";
+import { DbxExceptionFilter } from "src/filters/dbx-exception.filter";
 
 @ApiTags("services")
 @ServicesAuth()
-@UseFilters(HttpExceptionFilter)
+@UseFilters(DbxExceptionFilter)
 @Controller()
 export class ServicesController {
 	constructor(
@@ -50,7 +50,7 @@ export class ServicesController {
 	@FilesGetMetadataSwagger()
 	@Get(":user/files/get_metadata")
 	async filesGetMetadata(@Req() req: Request) {
-		return this.servicesServices.filesGetMetadata(req);
+		return this.servicesServices.filesGetMetadata(req.dbx, req.query as IQuery);
 	}
 
 	@FilesGetPreviewSwagger()
@@ -80,31 +80,31 @@ export class ServicesController {
 	@FilesUploadFromUrlSwagger()
 	@Post(":user/files/upload_from_url")
 	async filesUploadFileFromUrl(@Req() req: Request) {
-		return this.servicesServices.filesUploadFileFromUrl(req);
+		return this.servicesServices.filesUploadFileFromUrl(req.dbx, req.query as IQuery);
 	}
 
 	@FilesCopySwagger()
 	@Post(":user/files/copy")
 	async copyFiles(@Req() req: Request) {
-		return this.servicesServices.filesCopy(req);
+		return this.servicesServices.filesCopy(req.dbx, req.query as IQuery);
 	}
 
 	@FilesMoveSwagger()
 	@Post(":user/files/move")
 	async moveFiles(@Req() req: Request) {
-		return this.servicesServices.filesMove(req);
+		return this.servicesServices.filesMove(req.dbx, req.query as IQuery);
 	}
 
 	@FilesDeleteSwagger()
 	@Delete(":user/files/delete")
 	async filesDelete(@Req() req: Request) {
-		return this.servicesServices.filesDelete(req);
+		return this.servicesServices.filesDelete(req.dbx, req.query as IQuery);
 	}
 
 	@FilesGetThumbnailSwagger()
 	@Get(":user/files/get_thumbnail")
 	async filesGetThumbnail(@Req() req: Request) {
-		return this.servicesServices.filesGetThumbnail(req);
+		return this.servicesServices.filesGetThumbnail(req.dbx, req.query as IQuery);
 	}
 
 	/** SHARING */
@@ -117,31 +117,31 @@ export class ServicesController {
 	@SharingModifySharedLinkSwagger()
 	@Patch(":user/sharing/modify_shared_link")
 	async sharingModifySharedLink(@Req() req: Request) {
-		return this.servicesServices.sharingModifySharedLink(req);
+		return this.servicesServices.sharingModifySharedLink(req.dbx, req.query as IQuery);
 	}
 
 	@SharingAddFileMemberSwagger()
 	@Post(":user/sharing/add_file_member")
 	async sharingAddFileMember(@Req() req: Request) {
-		return this.servicesServices.sharingAddFileMember(req)
+		return this.servicesServices.sharingAddFileMember(req.dbx, req.query as IQuery)
 	}
 
 	@SharingAddFolderMemberSwagger()
 	@Post(":user/sharing/add_folder_member")
 	async sharingAddFolderMember(@Req() req: Request) {
-		return this.servicesServices.sharingAddFolderMember(req)
+		return this.servicesServices.sharingAddFolderMember(req.dbx, req.query as IQuery)
 	}
 
 	@SharingListSharedLinksSwagger()
 	@Get(":user/sharing/list_shared_links")
 	async sharingListSharedLinks(@Req() req: Request) {
-		return this.servicesServices.sharingListSharedLinks(req);
+		return this.servicesServices.sharingListSharedLinks(req.dbx, req.query as IQuery);
 	}
 
 	@SharingListFoldersSwagger()
 	@Get(":user/sharing/list_folders")
 	async sharingFolders(@Req() req: Request) {
-		return this.servicesServices.sharingListFolders(req);
+		return this.servicesServices.sharingListFolders(req.dbx, req.query as IQuery);
 	}
 
 

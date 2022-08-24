@@ -12,7 +12,7 @@ export function FilesUploadFromUrlSwagger() {
 		}),
 		ApiQuery({
 			name: "path",
-			description: "The path in Dropbox where the URL will be saved to.<br /><b>Example:</b> /images/cat.jpg",
+			description: "The path in Dropbox where the URL will be saved to.<br /><b>Example:</b> /images/cat.jpg<br /><b>if empty, it will be saved in the root with the name of the file in the url (if there is a filename).</b>",
 			schema: {
 				type: "string"
 			},

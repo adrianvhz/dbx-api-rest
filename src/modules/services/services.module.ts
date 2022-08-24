@@ -1,4 +1,4 @@
-import { Module, NestModule, MiddlewareConsumer } from "@nestjs/common";
+import { Module, NestModule, MiddlewareConsumer, RequestMethod } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import { UsersModule } from "src/modules/users/users.module";
