@@ -6,7 +6,7 @@ import { CreateUserDto } from "./modules/users/dto/create-user.dto";
 
 const initSwagger = (app: NestExpressApplication) => {
 	var config = new DocumentBuilder()
-	.setTitle("DBX-API")
+	.setTitle("DBX-APIREST")
 	.setDescription("")
 	.setVersion("v1.0.0")
 	.addBasicAuth({

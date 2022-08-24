@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Req, Res, Patch, Delete } from "@nestjs/common";
+import { Controller, Post, Get, Req, Res, Patch, Delete, UseFilters, HttpAdapterHost } from "@nestjs/common";
 import { ApiHideProperty, ApiParam, ApiTags } from "@nestjs/swagger";
 import { ServicesService } from "./services.service";
 import { ServicesAuth } from "src/decorators/authorization/services-auth.decorator";
@@ -23,10 +23,11 @@ import {
 	SharingListSharedLinksSwagger,
 	SharingListFoldersSwagger } from "src/decorators/swagger/services/sharing";
 import type { Request, Response } from "express"
-
+import { HttpExceptionFilter } from "src/filters/http-execption.filter";
 
 @ApiTags("services")
 @ServicesAuth()
+@UseFilters(HttpExceptionFilter)
 @Controller()
 export class ServicesController {
 	constructor(
@@ -37,13 +38,13 @@ export class ServicesController {
 	@FilesListFolderSwagger()
 	@Get(":user/files/list_folder")
 	async filesListFolder(@Req() req: Request) {
-		return this.servicesServices.filesListFolder(req);
+		return this.servicesServices.filesListFolder(req.dbx, req.query as IQuery);
 	}
 
 	@FilesSearchSwagger()
 	@Get(":user/files/search")
 	async filesSearch(@Req() req: Request) {
-		return this.servicesServices.filesSearch(req);
+		return this.servicesServices.filesSearch(req.dbx, req.query as IQuery);
 	}
 
 	@FilesGetMetadataSwagger()

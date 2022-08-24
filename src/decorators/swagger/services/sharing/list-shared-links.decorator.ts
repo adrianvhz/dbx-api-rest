@@ -9,7 +9,7 @@ export function SharingListSharedLinksSwagger() {
 		}),
 		ApiQuery({
 			name: "path",
-			description: "The path to the file or folder to get the link(s). <b>[path - id - rev]<br />If empty, returns a list of all shared links for the current user.</b>",
+			description: "The path to the file or folder to get the shared link(s). <b>[path - id - rev]<br />If empty, returns a list of all shared links for the current user.</b>",
 			schema: {
 				type: "string"
 			},

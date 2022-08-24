@@ -5,10 +5,12 @@ declare global {
 	namespace Express {
 		interface User extends UserDoc {}
 	
-		export interface Request {
+		interface Request {
+			query: any
 			dbx: Dropbox
 		}
 	}
+	
 	interface resultOptions {
 		/**
 		* Whether it should throw an error when a user is not found.
@@ -16,6 +18,10 @@ declare global {
 		* Default: `true`
 		*/
 		throwError?: boolean;
+	}
+
+	interface IQuery {
+		[key: string]: string | any
 	}
 }
 

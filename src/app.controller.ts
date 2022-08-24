@@ -1,5 +1,5 @@
 import { AppService } from './app.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 import { ModifyCredentialsDto, CredentialsBodyDto } from './common/dto';
 import {
 	Controller,
@@ -36,7 +36,7 @@ export class AppController {
 	}
 
 	@RefreshDbxTokenSwagger()
-	@Post("refresh_dbx_token")
+	@Post("refresh_dbx_access_token")
 	async refreshDbxToken(@Body("user") user: string) {
 		return this.appService.refreshDbxToken(user);
 	}
@@ -48,6 +48,7 @@ export class AppController {
 	}
 
 	/** THIS IS A EXAMPLE VIEW FOR AUTH REGISTER REDIRECT - SECOND METHOD - DELETE IT IN PRODUCTION */
+	@ApiExcludeEndpoint()
 	@Get("dashboard")
 	dashboardView() {
 		return "<p>Aca seria donde se redirigio según el parametro 'domain' proporcionado en el body.</p>"

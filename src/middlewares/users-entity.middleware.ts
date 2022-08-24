@@ -12,7 +12,7 @@ export function usersEntityMiddleware() {
 
 	schema.post("findOneAndUpdate", async function(doc) {
 		if (!doc) return;
-		console.log("user has been updated!")
+		console.log("user " + doc.user + " has been updated!")
 		
 		// /**
 		// * when ["$unset"]
@@ -47,11 +47,11 @@ export function usersEntityMiddleware() {
 			var oUpdate = this.getUpdate()["$set"];
 			
 			if (!oUpdate) return;
-			if (oUpdate.tk_acs) {
+			if (oUpdate.access_token) {
 				console.log("access_token expires updated!")
 				var date = new Date();
 				date.setHours(date.getHours() + 4);
-				doc.tk_acs_expires = date;
+				doc.access_token_expires = date;
 				doc.save();
 			}
 

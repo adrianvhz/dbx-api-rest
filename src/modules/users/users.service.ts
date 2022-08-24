@@ -25,9 +25,7 @@ export class UsersService {
 		if (!user && options.throwError) {
 			throw new UserNotFoundException();
 		}
-		/**
-		 * Default options.history === undefined == false
-		 */
+
 		else {
 			return user;
 		}

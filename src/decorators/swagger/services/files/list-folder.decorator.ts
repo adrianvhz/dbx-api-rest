@@ -1,18 +1,22 @@
 import { applyDecorators, HttpStatus } from "@nestjs/common"
-import { ApiHideProperty, ApiOperation, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
+import { ApiOperation, ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger"
 
 export function FilesListFolderSwagger() {
 	return applyDecorators(
+		ApiOperation({
+			description: "Return the contents of a folder."
+		}),
+		ApiResponse({
+			status: HttpStatus.OK,
+			description: "Successful operation!"
+		}),
 		ApiResponse({
 			status: HttpStatus.CONFLICT,
 			description: "Error: Conflict"
 		}),
-		ApiOperation({
-			description: "Starts returning the contents of a folder."
-		}),
 		ApiQuery({
-			name: "folder",
-			description: "A unique identifier to the folder to search for. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>",
+			name: "path",
+			description: "A unique identifier for the file. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>",
 			schema: {
 				type: "string"
 			},
@@ -20,7 +24,7 @@ export function FilesListFolderSwagger() {
 		}),
 		ApiQuery({
 			name: "recursive",
-			description: "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. Default: false",
+			description: "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders.<br /><b>Default: false</b>",
 			schema: {
 				type: "boolean"
 			},

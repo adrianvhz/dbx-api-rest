@@ -37,6 +37,17 @@ const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	....
 }
 ```
+<br>
+
+> Si se va a utilizar el endpoint `auth/register` (donde el api se encarga de vincular la cuenta de dropbox)<br>
+> se tiene que registrar en la aplicación que dropbox el siguiente **Redirect URI**:<br>
+> 
+> {HTTP_PROTOCOL}://hostname:{PORT}/auth/register&nbsp;&nbsp;&nbsp;&nbsp;_(omitir puerto en producción)_<br>
+> 
+> <ins>Ejemplo en local:</ins><br>
+> _http://localhost:5000/auth/register_
+
+<br>
 5. Iniciar.
 
 ```bash
@@ -65,22 +76,22 @@ $ curl.exe -X POST -H "Content-type: application/json" -d '{\"user\":\"test\",\"
 
 ## Dropbox Scopes
 
-#### Account Info
-&#9745; account_info.write<br>
-&#9745; account_info.read
+&emsp; **<ins>Account Info</ins>**<br>
+&emsp; &#9745; account_info.write<br>
+&emsp; &#9745; account_info.read
 
-#### Files and folders
-&#9745; files.metadata.write<br>
-&#9745; files.metadata.read<br>
-&#9745; files.content.write<br>
-&#9745; files.content.read
+&emsp; **<ins>Files and folders</ins>**<br>
+&emsp; &#9745; files.metadata.write<br>
+&emsp; &#9745; files.metadata.read<br>
+&emsp; &#9745; files.content.write<br>
+&emsp; &#9745; files.content.read
 
-#### Collaboration
-&#9745; sharing.read<br>
-&#9745; file_requests.write<br>
-&#9745; file_requests.read<br>
-&#9745; contacts.write<br>
-&#9745; contacts.read
+&emsp; **<ins>Collaboration</ins>**<br>
+&emsp; &#9745; sharing.read<br>
+&emsp; &#9745; file_requests.write<br>
+&emsp; &#9745; file_requests.read<br>
+&emsp; &#9745; contacts.write<br>
+&emsp; &#9745; contacts.read
 
 ## Pasos
 

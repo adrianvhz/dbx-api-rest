@@ -4,7 +4,6 @@ import { UsersService } from "src/modules/users/users.service";
 import { getDropboxOAuth2Url } from "src/lib/getDropboxOAuth2Url";
 import { generateSecureRandomKey } from "src/lib/generateSecureRandomKey";
 import { Dropbox, DropboxAuth } from "dropbox";
-import { AccountAlreadyInactive } from "src/exceptions/UserAlreadyInactiveException";
 import node_fetch from "node-fetch";
 import { expiresToken } from "src/lib/expiresToken";
 import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
@@ -80,6 +79,7 @@ export class AuthService {
 			},                                                                       
 			status: user.status.toUpperCase(),
 			OAUTH2_AUTHORIZE: user.status === "inactive" && !req.body.register ? await getDropboxOAuth2Url(this._configDbx.clientId, req.body.domain) : undefined,
+			message: isNew ? "The user has been successfully created!" : "The user exists BUT doesn't have a linked dropbox account.",
 			isNew: isNew || undefined
 		})
 	}
@@ -90,36 +90,48 @@ export class AuthService {
 	 */
 	/** ACTION
 	* When this is executed:
-	* - Dropbox tokens are removed. `tk_acs` - `tk_rfsh` - `tk_acs_expires`
-	* - The current `dbx_email` field is pushed to the `dropbox_emails` array field in `history`.
-	* - The `status` changes to "inactive" in `history`.
+	* - Dropbox tokens are removed. `access_token` - `refresh_token` - `access_token_expires`
+	* - The current `dbx_email` field is pushed to the `history_dropbox_emails` array field.
+	* - The `status` changes to "inactive".
 	* - The `dbx_email` field is removed.
 	* - Revokes the refresh token and all generated access tokens from Dropbox.
 	*/
 	async unlinkAccount(res: Response, body: any) {
-		var user = await this.usersService.findOne(body.user)
-		if (user.status === "inactive") throw new AccountAlreadyInactive();
+		var user = await this.usersService.findOne(body.user, { throwError: false });
+		if (!user) {{
+			return res.status(400).json({
+				statusCode: 400,
+				error: "User couldn't be found in the database!",
+				timestamp: new Date().toISOString()
+			})
+		}}
+		if (user.status === "inactive") {
+			return res.status(400).json({
+				statusCode: 400,
+				error: "The user's account has already been unlinked and is listed as 'inactive' in the db.",
+				timestamp: new Date().toISOString()
+			})
+		}
 		await user.updateOne({
 			$set: {
-				status: "inactive",
+				status: "inactive"
 			},
 			$addToSet: {
-				dropbox_emails: user.dbx_email
-			}
-		});
-		await user.updateOne({
+				history_dbx_emails: user.dbx_email
+			},
 			$unset: {
-				tk_acs: null,
-				tk_rfsh: null,
-				tk_acs_expires: null,
+				dbx_account_id: null,
+				access_token: null,
+				refresh_token: null,
+				access_token_expires: null,
 				dbx_email: null
 			}
 		});
-		await this._dbx(user.access_token).authTokenRevoke();
+		this._dbx(user.access_token).authTokenRevoke();
 		res.status(200).json({
 			statusCode: 200,
 			message: "The account has been successfully unlinked and placed in inactive status."
-		})
+		});
 	}
 
 
@@ -134,8 +146,7 @@ export class AuthService {
 			access_token: tokens.access_token,
 			refresh_token: tokens.refresh_token,
 			access_token_expires: expiresToken(),
-			dbx_email: email,
-			history_dbx_emails: [email]
+			dbx_email: email
 		}
 
 		if (req.cookies.action === "update") {
