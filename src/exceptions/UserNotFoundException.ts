@@ -12,6 +12,11 @@ export class UserNotFoundException extends HttpException {
 	 * @param response Optional response parameter to replace default.
 	 */
 	constructor(response: string | Record<string, any> = "User couldn't be found in the database!") {
-		super(response, 404);
+		super({
+			statusCode: 404,
+			name: UserNotFoundException.name,
+			error: response,
+			timestamp: new Date().toISOString()
+		}, 404);
 	}
 }

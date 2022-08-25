@@ -1,13 +1,16 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { UsersService } from "src/modules/users/users.service";
 import { getDropboxOAuth2Url } from "src/lib/getDropboxOAuth2Url";
 import { generateSecureRandomKey } from "src/lib/generateSecureRandomKey";
 import { Dropbox, DropboxAuth } from "dropbox";
-import node_fetch from "node-fetch";
 import { expiresToken } from "src/lib/expiresToken";
+import { setRedirectionToDropboxOAuth2 } from "src/utils/setRedirectionToDropboxOAuth2";
+import { UserDoc } from "../users/schemas/user.schema";
+import node_fetch from "node-fetch";
 import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
 import type { Request, Response } from "express"
+import { UserAlreadyInactiveException } from "src/exceptions/UserAlreadyInactive";
 
 
 @Injectable()
@@ -40,20 +43,14 @@ export class AuthService {
 	async linkDbxAccount(req: Request, res: Response) {
 		var user = req.user;
 		var isNew = false;
-	
-		/**
-		 * For accounts registered in inactive status
-		 */
-		// Create user if not exists
-		/** FOR SECOND METHOD - API SENDS DBX FORM */ // @ts-ignore
+
+		/** Create user if not exists */ // @ts-ignore
 		if (user === "null") {
+			/** FOR SECOND METHOD - API SENDS DBX FORM */ 
 			if (req.body.register) {
-				var date = new Date();
-				date.setMinutes(date.getMinutes() + 5);
-				res.cookie("action", "create", { httpOnly: true, expires: date });
-				res.cookie("redirect_to", req.body.domain, { httpOnly: true, expires: date })
-				return res.redirect(await getDropboxOAuth2Url(this._configDbx.clientId, `${req.protocol}://${req.get("host")}/auth/register`));
+				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "create" })
 			}
+			
 			/** PRINCIPAL METHOD */
 			user = await this.usersService.create({
 				user: req.body.user,
@@ -62,13 +59,12 @@ export class AuthService {
 				status: "inactive"
 			})
 			isNew = true;
-		} else { // if user exists - inactive status 
+		} 
+		
+		/* Update user  */
+		else { // if user exists and is in inactive status
 			if (req.body.register && user.status === "inactive") {
-				var date = new Date();
-				date.setMinutes(date.getMinutes() + 5);
-				res.cookie("action", "update", { httpOnly: true, expires: date });
-				res.cookie("redirect_to", req.body.domain, { httpOnly: true, expires: date })
-				return res.redirect(await getDropboxOAuth2Url(this._configDbx.clientId, `${req.protocol}://${req.get("host")}/auth/register`));
+				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "update" });
 			}
 		}
 
@@ -79,7 +75,8 @@ export class AuthService {
 			},                                                                       
 			status: user.status.toUpperCase(),
 			OAUTH2_AUTHORIZE: user.status === "inactive" && !req.body.register ? await getDropboxOAuth2Url(this._configDbx.clientId, req.body.domain) : undefined,
-			message: isNew ? "The user has been successfully created!" : "The user exists BUT doesn't have a linked dropbox account.",
+			message: user.status === "active" ? "The user exists and has a linked dropbox account." : "The user exists BUT doesn't have a linked dropbox account.",
+			user_created_msg: isNew ? "The user has been successfully created!" : undefined,
 			isNew: isNew || undefined
 		})
 	}
@@ -97,21 +94,10 @@ export class AuthService {
 	* - Revokes the refresh token and all generated access tokens from Dropbox.
 	*/
 	async unlinkAccount(res: Response, body: any) {
-		var user = await this.usersService.findOne(body.user, { throwError: false });
-		if (!user) {{
-			return res.status(400).json({
-				statusCode: 400,
-				error: "User couldn't be found in the database!",
-				timestamp: new Date().toISOString()
-			})
-		}}
-		if (user.status === "inactive") {
-			return res.status(400).json({
-				statusCode: 400,
-				error: "The user's account has already been unlinked and is listed as 'inactive' in the db.",
-				timestamp: new Date().toISOString()
-			})
-		}
+		var user = await this.usersService.findOne(body.user);
+
+		if (user.status === "inactive") throw new UserAlreadyInactiveException();
+
 		await user.updateOne({
 			$set: {
 				status: "inactive"
@@ -139,16 +125,18 @@ export class AuthService {
    async apiRegister(req: Request, res: Response) {
 		var username = JSON.parse(req.cookies.SESSION_ID).user;
 		var code = req.query.code as string;
+		var redirect_to = req.cookies.redirect_to;
 		var tokens = (await this._dbx_auth.getAccessTokenFromCode(`${req.protocol}://${req.get("host")}${req.path}`, code)).result as any
-		var email = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result.email;
+		var accountData = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result;
 		var dbx_data = {
 			dbx_account_id: tokens.account_id,
 			access_token: tokens.access_token,
 			refresh_token: tokens.refresh_token,
 			access_token_expires: expiresToken(),
-			dbx_email: email
+			dbx_email: accountData.email
 		}
 
+		// If req.cookie.action === "update"
 		if (req.cookies.action === "update") {
 			await this.usersService.update(username, {
 				...dbx_data,
@@ -156,15 +144,76 @@ export class AuthService {
 			})
 		}
 		
-	// if req.cookie.action === "create"
+		// If req.cookie.action === "create"
 		else {
 			await this.usersService.create({
+				user: username,
+				client_key: await generateSecureRandomKey(9),
+				client_secret: await generateSecureRandomKey(9),
+				...dbx_data,
+			});
+		}
+
+		res.redirect(308, redirect_to)
+	}
+
+	/**
+	 * body: (application/json OR application/x-www-form-urlencoded)
+	 * 	- user
+	 * 	- code
+	 *  	- redirect_uri (el redirect_uri que se uso para obtener el code)
+	 * 
+	 * @returns 
+	 * 	credentials: {
+	 * 		client_key: ...,
+	 * 		client_secret ...,
+	 * 	},
+	 * 	message: ..,
+	 * 	status: ..,
+	 * 	isNew: ..
+	 */
+	async clientRegister({ user: username, code, redirect_uri }) {
+		var tokens = (await this._dbx_auth.getAccessTokenFromCode(redirect_uri, code)).result as any
+		var accountData = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result;
+		var dbx_data = {
+			dbx_account_id: accountData.account_id,
+			access_token: tokens.access_token,
+			refresh_token: tokens.refresh_token,
+			access_token_expires: expiresToken(),
+			dbx_email: accountData.email
+		}
+
+		var user = await this.usersService.findOne(username, { throwError: false });
+		var userNewOrUpdated: UserDoc;
+		var isNew = false;
+
+		/** UPDATE USER */
+		if (user) {
+			userNewOrUpdated = await this.usersService.update(username, {
+				...dbx_data,
+				status: "active"
+			})
+		}
+		
+		/** CREATE USER */
+		else {
+			userNewOrUpdated = await this.usersService.create({
 				user: username,
 				...dbx_data,
 				client_key: await generateSecureRandomKey(9),
 				client_secret: await generateSecureRandomKey(9),
 			});
+			isNew = true;
 		}
-		return res.redirect(308, req.cookies.redirect_to)
+
+		return {
+			credentials: {
+				client_key: userNewOrUpdated.client_key,
+				client_secret: userNewOrUpdated.client_secret
+			},
+			message: isNew ? "User has been successfully CREATED!" : "User has been successfully UPDATED!",
+			status: userNewOrUpdated.status,
+			isNew: isNew || undefined
+		}
 	}
 }

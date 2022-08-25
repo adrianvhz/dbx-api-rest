@@ -22,8 +22,8 @@ import {
 	SharingAddFolderMemberSwagger,
 	SharingListSharedLinksSwagger,
 	SharingListFoldersSwagger } from "src/decorators/swagger/services/sharing";
-import type { Request, Response } from "express"
 import { DbxExceptionFilter } from "src/filters/dbx-exception.filter";
+import type { Request, Response } from "express"
 
 @ApiTags("services")
 @ServicesAuth()
@@ -73,8 +73,8 @@ export class ServicesController {
 
 	@FilesUploadSwagger()
 	@Post(":user/files/upload")
-	async uploadFile(@Req() req: Request, @Res() res: Response) {
-		this.servicesServices.uploadFile(req, res);
+	async uploadFile(@Req() req: Request) {
+		return this.servicesServices.uploadFile(req, req.query as IQuery);
 	}
 
 	@FilesUploadFromUrlSwagger()

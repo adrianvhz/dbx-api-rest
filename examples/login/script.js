@@ -8,6 +8,6 @@ form.onsubmit = (evt) => {
 		user: data.user,
 		domain: "http://localhost:5000/dashboard"
 	}
-	setCookie("SESSION_ID", JSON.stringify(valueCookie), 1);
+	setCookie("SESSION_ID", JSON.stringify(valueCookie));
 	window.location.href = "/"
 }

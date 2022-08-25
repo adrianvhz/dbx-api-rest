@@ -3,12 +3,12 @@ import { DropboxResponseError } from 'dropbox';
 import { Request, Response } from 'express';
 
 @Catch()
-export class DbxExceptionFilter implements ExceptionFilter {
+export class ClientRegisterFilter implements ExceptionFilter {
 	catch(exception: DropboxResponseError<any> & Error, host: ArgumentsHost) {
 		const ctx = host.switchToHttp();
 		const response = ctx.getResponse<Response>();
 		const request = ctx.getRequest<Request>();
-		const status = exception.status || HttpStatus.BAD_REQUEST;
+		const status = exception.status || HttpStatus.BAD_REQUEST
 
 		response.status(status).json({
 			statusCode: status,

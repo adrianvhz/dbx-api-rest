@@ -51,6 +51,11 @@ export class AppController {
 	@ApiExcludeEndpoint()
 	@Get("dashboard")
 	dashboardView() {
-		return "<p>Aca seria donde se redirigio según el parametro 'domain' proporcionado en el body.</p>"
+		return `
+			<div>
+				<p>Aca seria donde se redirigio según el parametro 'domain' proporcionado en el body.</p>
+				<button><a href="/">Ir a Home</a></button>
+			</div>
+		`
 	}
 }

@@ -9,6 +9,7 @@ import stream from "stream"
 import type { Request, Response } from "express";
 import { Dropbox } from 'dropbox';
 import { fileNameFromUrl } from 'src/lib/getFilenameFromUrl';
+import { isURL } from 'class-validator';
 
 @Injectable()
 export class ServicesService {
@@ -132,124 +133,123 @@ export class ServicesService {
 		}
 	}
 
-	uploadFile(req: Request, res: Response) { 
+	async uploadFile(req: Request, query: IQuery) { 
 		/**
-		* With multipart-form-data
-		* file name: file
+		* With content-type = multipart-form-data
+		* Body: 
+		*   - file: ...   (the binary file to upload)
 		*/
-		if (req.headers['content-type'].startsWith("multipart/form-data")) {
-			if (!req.file) {
-				throw new BadRequestException("Bad Request", "File missing!");
-			}
-			req.dbx.filesUpload({
-				path: req.query.path ? req.query.path + "/" + req.file.originalname : "/" + req.file.originalname, // @ts-ignore
-				mode: req.query.mode && {
-					".tag": req.query.mode
+		if (req.headers['content-type'] && req.headers['content-type'].startsWith("multipart/form-data")) {
+			console.log(req.file)
+			if (!req.file) throw new HttpException("You must provide a 'file' field and it must be a file (binary data).", 400);
+
+			var result = await req.dbx.filesUpload({ // @ts-ignore
+				path: query.path ? ((req.query as any).path.includes(".") ? query.path : `${query.path}/${req.file.originalname}`) : `/${req.file.originalname}`, // @ts-ignore
+				mode: query.mode && {
+					".tag": query.mode
 				},
-				autorename: req.query.autorename && req.query.autorename === "true",
+				autorename: query.autorename && query.autorename === "true",
 				contents: req.file.buffer
 			})
-				.then(result => {
-					res.status(200).json(result.result)
-				})
-				.catch(e => {
-					res.status(e.status).json({
-						statusCode: e.status,
-						message: e.error
-					})
-				})
-		}
-		/**
-		* With binary file alone.
-		*/
-		else {
-			var length = 0;
-			var file = [];
-			req.on("data", (chunk) => {
-					length += chunk.byteLength
-					file.push(chunk)
-			})
-			req.on("end", () => {
-					res.writeHead(200, {
-						"Content-Type": "image/png",
-						"Content-Length": length
-					})
-					res.end(Buffer.concat(file, length));
 
-					req.dbx.filesUpload({
-						path: req.query.path ? req.query.path + "/" + "test.jpg" : "/" + "test.jpg",
-						mode: { ".tag": "overwrite" } ,
-						contents: file,
-					})
-						.then(result => {
-							res.status(200).json(result.result)
-						})
-						.catch(e => {
-							res.status(e.status).json({
-								statusCode: e.status,
-								message: e.error
-							})
-						})
-			})
+			return result.result
 		}
+
+		throw new HttpException("Content-Type Header must be multipart/form-data", 400)
+		/**
+		* With binary file. (content type = application/octet-stream)
+		* 
+		* Note:
+		*   - A complete path is required (with file name).
+		*		 For example:
+		*			[✔] /documents/image.jpg
+		*			[X] /documents
+		*/
+		
+		/** PENDING */
+
+		// else if (req.headers['content-type']) {
+		// 	var length = 0;
+		// 	var file = [];
+		// 	var filename = req.query.filename;
+
+		// 	req.on("data", (chunk) => {
+		// 		length += chunk.byteLength
+		// 		file.push(chunk)
+		// 	});
+
+		// 	req.on("end", () => {
+		// 		req.dbx.filesUpload({
+		// 			// @ts-ignore
+		// 			path: query.path ? (query.path.includes(".") ? query.path : `${query.path}/${req.file.originalname}`) : `/${req.file.originalname}`,
+		// 			mode: query.mode && {
+		// 				".tag": query.mode
+		// 			},
+		// 			autorename: query.autorename && query.autorename === "true",
+		// 			contents: file
+		// 		})
+		// 	})
+
+		// 	return sdf
+		// }
 	}
 
 	async filesUploadFileFromUrl(dbx: Dropbox, query: IQuery) {
+		if (!isURL(query.url)) throw new HttpException("The url parameter is not a url.", 400);
+
 		var filename = fileNameFromUrl(query.url);
 		var fileMetadata = await dbx.filesSaveUrl({
 			path: query.path ? (query.path.includes(".") ? query.path : `${query.path}/${filename}`) : `/${filename}`,
 			url: query.url
 		});
 
-		return fileMetadata.result
+		return fileMetadata.result;
 	}
 
 	async filesCopy(dbx: Dropbox, query: IQuery) {
-		var fileMetadata = await dbx.filesCopyV2({
+		var result = await dbx.filesCopyV2({
 			from_path: query.from_path,
 			to_path: query.to_path,
 			autorename: query.autorename && query.autorename === "true"
 		});
 
-		return fileMetadata.result.metadata
+		return result.result.metadata;
 	}
 
 	async filesMove(dbx: Dropbox, query: IQuery) {
-		return (
-			await dbx.filesMoveV2({
-				from_path: query.from_path as string,
-				to_path: query.to_path as string,
-				autorename: query.autorename && query.autorename === "true"
-			})
-		)
+		var result = await dbx.filesMoveV2({
+			from_path: query.from_path,
+			to_path: query.to_path,
+			autorename: query.autorename && query.autorename === "true"
+		});
+
+		return result.result.metadata;
 	}
 
 	async filesDelete(dbx: Dropbox, query: IQuery) {
-		return (
-			await dbx.filesDeleteV2({
-				path: query.path as string
-			})
-		)
+		var result = await dbx.filesDeleteV2({
+			path: query.path
+		});
+
+		return result.result.metadata;
 	}
 
 	async filesGetThumbnail(dbx: Dropbox, query: IQuery) {
-		return (
-			await dbx.filesGetThumbnailV2({
-				resource: query.resource && {
-					".tag": "path",
-					path: ""
-				},
-				format: query.format && {
-					".tag": "jpeg"
-				},
-				mode: query.mode && {
-					".tag": "bestfit"
-				},
-				size: query.mode && {
-					".tag": "w1024h768"
-				}
-			})
-		)
+		var result = await dbx.filesGetThumbnailV2({
+			// resource: {".tag": "path", path: ""},
+			resource: {".tag": "link", url: "", path: ""}, // when .tag="link" and url is a folder shared_link, is required "path".
+			format: query.format && {
+				".tag": query.format  // "jpg" | "png"
+			},
+			mode: query.mode && {
+				".tag": query.mode
+			},
+			size: query.size && {
+				".tag": query.size
+			}
+		})
+
+		return result.result;
 	}
 
 	async sharingCreateSharedLink(req: Request, res: Response) {
@@ -303,52 +303,44 @@ export class ServicesService {
 	}
 
 	async sharingModifySharedLink(dbx: Dropbox, query: IQuery) {
-		return (
-			await dbx.sharingModifySharedLinkSettings({
-				url: query.url as string,
-				settings: { // @ts-ignore
-					access: query.access && {
-						".tag": query.access
-					}, // @ts-ignore
-					audience: query.audience && {
-						".tag": query.audience
-					},
-					allow_download: query.allow_download && query.allow_download === "true",
-					require_password: query.require_password && query.require_password === "true",
-					link_password: query.link_password as string,
-					expires: query.expires as string
-				}
-			})
-		).result
+		var result = await dbx.sharingModifySharedLinkSettings({
+			url: query.url,
+			settings: {
+				access: query.access && {
+					".tag": query.access
+				},
+				audience: query.audience && {
+					".tag": query.audience
+				},
+				allow_download: query.allow_download && query.allow_download === "true",
+				require_password: query.require_password && query.require_password === "true",
+				link_password: query.link_password as string,
+				expires: query.expires as string
+			}
+		});
+
+		return result.result;
 	}
 		
 	async sharingAddFileMember(dbx: Dropbox, query: IQuery) {
-		if (query.members && !Array.isArray(query.members)) {
-			query.members = new Array(query.members as any);
-		}
-
-		return (
-			await dbx.sharingAddFileMember({
-				file: query.file, // @ts-ignore
-				access_level: query.access_level && {
-					".tag": query.access_level
-				}, // @ts-ignore
-				members: query.members.map((el: string) => {
-					var isId = el.startsWith("id:");
-					return {
-						".tag": isId ? "dropbox_id" : "email",
-						[isId ? "dropbox_id" : "email"]: el
-					}
-				})
+		var result = await dbx.sharingAddFileMember({
+			file: query.file,
+			access_level: query.access_level && {
+				".tag": query.access_level
+			},
+			members: query.members.map((el: string) => {
+				var isId = el.startsWith("id:");
+				return {
+					".tag": isId ? "dropbox_id" : "email",
+					[isId ? "dropbox_id" : "email"]: el
+				}
 			})
-		).result
+		})
+
+		return result.result;
 	}
 
 	async sharingAddFolderMember(dbx: Dropbox, query: IQuery) {
-		if (query.members && !Array.isArray(query.members)) {
-			query.members = new Array(query.members as any);
-		}
-		
 		await dbx.sharingAddFolderMember({
 			shared_folder_id: query.shared_folder_id as string, // @ts-ignore
 			members: query.members.map((object: any) => {
@@ -368,35 +360,40 @@ export class ServicesService {
 			custom_message: query.custom_message as string
 		});
 
-		return "Successful operation!"
+		return {
+			statusCode: 201,
+			message: "Successful operation!"
+		}
 	}
 
 	async sharingListSharedLinks(dbx: Dropbox, query: IQuery) {
-		const links = (
-			await dbx.sharingListSharedLinks({
-				path: query.path as string,
-				direct_only: query.direct_only && query.direct_only === "true"
-			})
-		).result
+		var links = (await dbx.sharingListSharedLinks({
+			path: query.path,
+			direct_only: query.direct_only ? query.direct_only === "true" : true
+		})).result;
+			
 		if (links.links.length === 1) {
-				return {
-					content_url: links.links[0].url.replace("www.req.dbx.com", "dl.dropboxusercontent.com").replace("?dl=0", ""),
-					...links.links[0]
-				}
-		} else if (links.links.length === 0) {
+			return {
+				content_url: links.links[0].url.replace("www.dropbox.com", "dl.dropboxusercontent.com").replace("?dl=0", ""),
+				...links.links[0]
+			}
+		}
+		else if (links.links.length === 0) {
 			return {
 				links: "There are no shared links for this file or folder."
 			}
-		} else {
-			return links.links
+		}
+		else {
+			return links
 		}
 	}
 
 	async sharingListFolders(dbx: Dropbox, query: IQuery) {
-		const folder = (await dbx.sharingListFolders({
-				limit: query.limit && +query.limit
-		})).result
-		return folder;
+		var folders = await dbx.sharingListFolders({
+			limit: query.limit && +query.limit
+		});
+
+		return folders.result;
 	}
 
 

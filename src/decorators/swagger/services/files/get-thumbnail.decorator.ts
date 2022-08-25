@@ -8,7 +8,7 @@ export function FilesGetThumbnailSwagger() {
 		}),
 		ApiQuery({
 			name: "resource",
-			description: "Information specifying which file to preview.<br />This could be a path to a file, a shared link pointing to a file, or a shared link pointing to a folder, with a relative path. <b>[path - id - rev]</b>",
+			description: "Identification type for the file.",
 			schema: {
 				type: "string",
 				enum: ["path", "link"]
@@ -16,7 +16,7 @@ export function FilesGetThumbnailSwagger() {
 		}),
 		ApiQuery({
 			name: "PathOrLink",
-			description: ".",
+			description: "<u>OPTIONS</u>: A path or a shared_link depending on the option chosen in `resource`.<br />- A path to a file.<b>[path - id - rev]</b><br />- A shared link pointing to a file or folder, with a relative path.",
 			schema: {
 				type: "string"
 			}

@@ -6,8 +6,8 @@ declare global {
 		interface User extends UserDoc {}
 	
 		interface Request {
-			query: any
-			dbx: Dropbox
+			user: User;
+			dbx: Dropbox;
 		}
 	}
 	

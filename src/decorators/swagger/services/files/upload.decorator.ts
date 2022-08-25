@@ -25,7 +25,7 @@ export function FilesUploadSwagger() {
 		}),
 		ApiQuery({
 			name: "path",
-			description: "Folder path in the user's Dropbox to save the file. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>",
+			description: "Folder path in the user's Dropbox to save the file. <b>[path - id]</b><br /><b>if empty, it will be saved in the root with the name of the file in the url.</b>",
 			schema: {
 				type: "string"
 			},
