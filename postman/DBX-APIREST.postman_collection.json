@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9c8f09c5-0267-4164-9318-7503308171ab",
-		"name": "DBX-API",
+		"_postman_id": "916458c9-fa72-40c1-aab3-1b61ebab6367",
+		"name": "DBX-APIREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20703402"
 	},
@@ -24,11 +24,11 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "exercitation e"
+									"value": "laborum ut qui voluptate fugiat"
 								},
 								{
 									"key": "domain",
-									"value": "ut sunt"
+									"value": "id culpa officia"
 								}
 							]
 						},
@@ -55,11 +55,11 @@
 									"urlencoded": [
 										{
 											"key": "user",
-											"value": "exercitation e"
+											"value": "laborum ut qui voluptate fugiat"
 										},
 										{
 											"key": "domain",
-											"value": "ut sunt"
+											"value": "id culpa officia"
 										}
 									]
 								},
@@ -96,11 +96,11 @@
 									"urlencoded": [
 										{
 											"key": "user",
-											"value": "exercitation e"
+											"value": "laborum ut qui voluptate fugiat"
 										},
 										{
 											"key": "domain",
-											"value": "ut sunt"
+											"value": "id culpa officia"
 										}
 									]
 								},
@@ -137,11 +137,11 @@
 									"urlencoded": [
 										{
 											"key": "user",
-											"value": "exercitation e"
+											"value": "laborum ut qui voluptate fugiat"
 										},
 										{
 											"key": "domain",
-											"value": "ut sunt"
+											"value": "id culpa officia"
 										}
 									]
 								},
@@ -185,7 +185,7 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "in reprehenderit laboris et ad"
+									"value": "magna dolore"
 								}
 							]
 						},
@@ -212,7 +212,7 @@
 									"urlencoded": [
 										{
 											"key": "user",
-											"value": "in reprehenderit laboris et ad"
+											"value": "magna dolore"
 										}
 									]
 								},
@@ -249,7 +249,7 @@
 									"urlencoded": [
 										{
 											"key": "user",
-											"value": "in reprehenderit laboris et ad"
+											"value": "magna dolore"
 										}
 									]
 								},
@@ -266,6 +266,53 @@
 							},
 							"status": "Bad Request",
 							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Auth Controller client Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/client_register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"client_register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/auth/client_register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"client_register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -313,11 +360,11 @@
 								"header": [
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/:user?history=sit",
+									"raw": "{{baseUrl}}/users/:user?history=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -328,14 +375,14 @@
 									"query": [
 										{
 											"key": "history",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) "
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) "
 										}
 									]
@@ -354,11 +401,11 @@
 											},
 											{
 												"key": "x-admin",
-												"value": "sit"
+												"value": "eiusmod enim"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/users/:user?history=sit",
+											"raw": "{{baseUrl}}/users/:user?history=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -369,13 +416,13 @@
 											"query": [
 												{
 													"key": "history",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "(Required) "
 												}
 											]
@@ -422,7 +469,7 @@
 								"header": [
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									},
 									{
 										"key": "Content-Type",
@@ -431,7 +478,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"user\": \"enim est fugiat dolore\",\n  \"client_key\": \"Lorem anim et in\",\n  \"client_secret\": \"laboris eu\",\n  \"tk_acs\": \"esse ullamco minim\",\n  \"tk_rfsh\": \"non velit in aliquip deserunt\",\n  \"dbx_email\": \"dol\"\n}",
+									"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -450,7 +497,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) "
 										}
 									]
@@ -469,12 +516,12 @@
 											},
 											{
 												"key": "x-admin",
-												"value": "sit"
+												"value": "eiusmod enim"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"user\": \"enim est fugiat dolore\",\n  \"client_key\": \"Lorem anim et in\",\n  \"client_secret\": \"laboris eu\",\n  \"tk_acs\": \"esse ullamco minim\",\n  \"tk_rfsh\": \"non velit in aliquip deserunt\",\n  \"dbx_email\": \"dol\"\n}",
+											"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -493,7 +540,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "(Required) "
 												}
 											]
@@ -540,7 +587,7 @@
 								"header": [
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"url": {
@@ -555,7 +602,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) "
 										}
 									]
@@ -574,7 +621,7 @@
 											},
 											{
 												"key": "x-admin",
-												"value": "sit"
+												"value": "eiusmod enim"
 											}
 										],
 										"url": {
@@ -589,7 +636,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "(Required) "
 												}
 											]
@@ -638,7 +685,7 @@
 						"header": [
 							{
 								"key": "x-admin",
-								"value": "sit"
+								"value": "eiusmod enim"
 							}
 						],
 						"url": {
@@ -671,7 +718,7 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"url": {
@@ -714,7 +761,7 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"url": {
@@ -757,7 +804,7 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"url": {
@@ -817,7 +864,7 @@
 						"header": [
 							{
 								"key": "x-admin",
-								"value": "sit"
+								"value": "eiusmod enim"
 							},
 							{
 								"key": "Content-Type",
@@ -826,7 +873,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+							"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -856,12 +903,12 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -902,12 +949,12 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -948,12 +995,12 @@
 									},
 									{
 										"key": "x-admin",
-										"value": "sit"
+										"value": "eiusmod enim"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"user\": \"test\",\n  \"client_key\": \"tl95hoxt6ris6r0\",\n  \"client_secret\": \"qtesje5gvi80xdt\",\n  \"tk_acs\": \"sl.BM9MXDvKZ-WmMOm4OX_EdtHLkOFgagj1fwD9QIj4XZ0tnqSu2nqXeTOnNiwaQX3Tk_I-5o4spqyPNsqUr8Xt1I2dzjM8RzqsmjQDF6qOMQDXprc3W2gPWDSAZhkF0tAWkM6IsFfa_bwL\",\n  \"tk_rfsh\": \"LXomUFN9igIAAAAAAAAAATEPcylRcua4VyBBq3qOZKWqHoZLrJKsTEcOM2l-pV9I\",\n  \"dbx_email\": \"test@yahoo.com\"\n}",
+									"raw": "{\n  \"user\": \"et mollit ea\",\n  \"dbx_account_id\": \"veniam incididunt\",\n  \"client_key\": \"enim ut\",\n  \"client_secret\": \"sit aute in\",\n  \"access_token\": \"nulla dolore quis\",\n  \"refresh_token\": \"Ut ullamco reprehenderit ea\",\n  \"access_token_expires\": \"tempor ut ad incididunt nostrud\",\n  \"dbx_email\": \"consecte\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -972,508 +1019,6 @@
 							},
 							"status": "Unauthorized",
 							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "users-history",
-			"item": [
-				{
-					"name": "{user}",
-					"item": [
-						{
-							"name": "Users History Controller gets User History",
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": [
-										{
-											"key": "key",
-											"value": "x-admin",
-											"type": "string"
-										},
-										{
-											"key": "value",
-											"value": "<API Key>",
-											"type": "string"
-										},
-										{
-											"key": "in",
-											"value": "header",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-admin",
-										"value": "sit"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users-history/:user",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users-history",
-										":user"
-									],
-									"variable": [
-										{
-											"key": "user",
-											"value": "sit",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Example",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "x-admin",
-												"value": "<API Key>"
-											},
-											{
-												"key": "x-admin",
-												"value": "sit"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/users-history/:user",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"users-history",
-												":user"
-											],
-											"variable": [
-												{
-													"key": "user",
-													"value": "sit",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Users History Controller update User History",
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": [
-										{
-											"key": "key",
-											"value": "x-admin",
-											"type": "string"
-										},
-										{
-											"key": "value",
-											"value": "<API Key>",
-											"type": "string"
-										},
-										{
-											"key": "in",
-											"value": "header",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "x-admin",
-										"value": "sit"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"user\": \"deserunt incididunt Lorem dolore eu\",\n  \"status\": \"labore\",\n  \"dropbox_emails\": [\n    \"anim esse eu fugiat\",\n    \"consectetur\"\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/users-history/:user",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users-history",
-										":user"
-									],
-									"variable": [
-										{
-											"key": "user",
-											"value": "sit",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Example",
-									"originalRequest": {
-										"method": "PATCH",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "x-admin",
-												"value": "<API Key>"
-											},
-											{
-												"key": "x-admin",
-												"value": "sit"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"user\": \"nisi eu fugiat\",\n  \"status\": \"aliqua non tempor\",\n  \"dropbox_emails\": [\n    \"ex nulla ea\",\n    \"amet\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/users-history/:user",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"users-history",
-												":user"
-											],
-											"variable": [
-												{
-													"key": "user",
-													"value": "sit",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Users History Controller delete User History",
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": [
-										{
-											"key": "key",
-											"value": "x-admin",
-											"type": "string"
-										},
-										{
-											"key": "value",
-											"value": "<API Key>",
-											"type": "string"
-										},
-										{
-											"key": "in",
-											"value": "header",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "x-admin",
-										"value": "sit"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users-history/:user",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users-history",
-										":user"
-									],
-									"variable": [
-										{
-											"key": "user",
-											"value": "sit",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Example",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "x-admin",
-												"value": "<API Key>"
-											},
-											{
-												"key": "x-admin",
-												"value": "sit"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/users-history/:user",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"users-history",
-												":user"
-											],
-											"variable": [
-												{
-													"key": "user",
-													"value": "sit",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "Users History Controller get All Users History",
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": [
-								{
-									"key": "key",
-									"value": "x-admin",
-									"type": "string"
-								},
-								{
-									"key": "value",
-									"value": "<API Key>",
-									"type": "string"
-								},
-								{
-									"key": "in",
-									"value": "header",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-admin",
-								"value": "sit"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/users-history",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users-history"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Untitled Example",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "x-admin",
-										"value": "<API Key>"
-									},
-									{
-										"key": "x-admin",
-										"value": "sit"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/users-history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users-history"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Users History Controller create User History",
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": [
-								{
-									"key": "key",
-									"value": "x-admin",
-									"type": "string"
-								},
-								{
-									"key": "value",
-									"value": "<API Key>",
-									"type": "string"
-								},
-								{
-									"key": "in",
-									"value": "header",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-admin",
-								"value": "sit"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"user\": \"deserunt incididunt Lorem dolore eu\",\n  \"status\": \"labore\",\n  \"dropbox_emails\": [\n    \"anim esse eu fugiat\",\n    \"consectetur\"\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/users-history",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users-history"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Untitled Example",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "x-admin",
-										"value": "<API Key>"
-									},
-									{
-										"key": "x-admin",
-										"value": "sit"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"user\": \"nisi eu fugiat\",\n  \"status\": \"aliqua non tempor\",\n  \"dropbox_emails\": [\n    \"ex nulla ea\",\n    \"amet\"\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/users-history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users-history"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -1510,7 +1055,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/list_folder?folder=sit&recursive=true&limit=5770981",
+									"raw": "{{baseUrl}}/:user/files/list_folder?path=eiusmod enim&recursive=false&limit=-31026716",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1521,32 +1066,88 @@
 									],
 									"query": [
 										{
-											"key": "folder",
-											"value": "sit",
-											"description": "A unique identifier to the folder to search for. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>"
+											"key": "path",
+											"value": "eiusmod enim",
+											"description": "A unique identifier for the file. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>"
 										},
 										{
 											"key": "recursive",
-											"value": "true",
-											"description": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. Default: false"
+											"value": "false",
+											"description": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders.<br /><b>Default: false</b>"
 										},
 										{
 											"key": "limit",
-											"value": "5770981",
+											"value": "-31026716",
 											"description": "The maximum number of results to return per request."
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
 								},
-								"description": "Starts returning the contents of a folder."
+								"description": "Return the contents of a folder."
 							},
 							"response": [
+								{
+									"name": "Successful operation!",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/:user/files/list_folder?path=eiusmod enim&recursive=false&limit=-31026716",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												":user",
+												"files",
+												"list_folder"
+											],
+											"query": [
+												{
+													"key": "path",
+													"value": "eiusmod enim"
+												},
+												{
+													"key": "recursive",
+													"value": "false"
+												},
+												{
+													"key": "limit",
+													"value": "-31026716"
+												}
+											],
+											"variable": [
+												{
+													"key": "user",
+													"value": "eiusmod enim",
+													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
 								{
 									"name": "Error: Conflict",
 									"originalRequest": {
@@ -1559,7 +1160,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/list_folder?folder=sit&recursive=true&limit=5770981",
+											"raw": "{{baseUrl}}/:user/files/list_folder?path=eiusmod enim&recursive=true&limit=-31026716",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1570,8 +1171,8 @@
 											],
 											"query": [
 												{
-													"key": "folder",
-													"value": "sit"
+													"key": "path",
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "recursive",
@@ -1579,13 +1180,13 @@
 												},
 												{
 													"key": "limit",
-													"value": "5770981"
+													"value": "-31026716"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -1621,7 +1222,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/search?query=sit&path=sit&filename_only=true&order_by=last_modified_time&max_results=81887630&file_extensions=&file_extensions=",
+									"raw": "{{baseUrl}}/:user/files/search?query=eiusmod enim&path=eiusmod enim&filename_only=true&order_by=last_modified_time&max_results=-95791148&file_extensions=&file_extensions=",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1633,12 +1234,12 @@
 									"query": [
 										{
 											"key": "query",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The string to search for. May match across multiple fields based on the request arguments."
 										},
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "Scopes the search to a path in the user's Dropbox. <b>[path - id]</b><br /><b>Searches the entire Dropbox if not specified.</b>"
 										},
 										{
@@ -1653,7 +1254,7 @@
 										},
 										{
 											"key": "max_results",
-											"value": "81887630",
+											"value": "-95791148",
 											"description": "The maximum number of search results to return.<br /><b>Default: 100</b>"
 										},
 										{
@@ -1670,7 +1271,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -1690,7 +1291,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/search?query=sit&path=sit&filename_only=true&order_by=last_modified_time&max_results=81887630&file_extensions=&file_extensions=",
+											"raw": "{{baseUrl}}/:user/files/search?query=eiusmod enim&path=eiusmod enim&filename_only=true&order_by=last_modified_time&max_results=-95791148&file_extensions=&file_extensions=",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1702,11 +1303,11 @@
 											"query": [
 												{
 													"key": "query",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "filename_only",
@@ -1718,7 +1319,7 @@
 												},
 												{
 													"key": "max_results",
-													"value": "81887630"
+													"value": "-95791148"
 												},
 												{
 													"key": "file_extensions",
@@ -1732,7 +1333,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -1768,7 +1369,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/get_metadata?path=sit",
+									"raw": "{{baseUrl}}/:user/files/get_metadata?path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1780,14 +1381,14 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The path of a file or folder on Dropbox. <b>[path - id - rev]</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -1807,7 +1408,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/get_metadata?path=sit",
+											"raw": "{{baseUrl}}/:user/files/get_metadata?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1819,13 +1420,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -1861,7 +1462,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/get_preview?path=sit",
+									"raw": "{{baseUrl}}/:user/files/get_preview?path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1873,14 +1474,14 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The path of the file to view. <b>[path - id - rev]</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -1899,7 +1500,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/get_preview?path=sit",
+											"raw": "{{baseUrl}}/:user/files/get_preview?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1911,13 +1512,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -1953,7 +1554,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/download?path=sit",
+									"raw": "{{baseUrl}}/:user/files/download?path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1965,14 +1566,14 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The path of the file to download. <b>[path - id - rev]</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -1991,7 +1592,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"raw": "{{baseUrl}}/:user/files/download?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2003,13 +1604,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2039,7 +1640,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"raw": "{{baseUrl}}/:user/files/download?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2051,13 +1652,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2087,7 +1688,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/download?path=sit",
+											"raw": "{{baseUrl}}/:user/files/download?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2099,13 +1700,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2141,7 +1742,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/download_folder?path=sit",
+									"raw": "{{baseUrl}}/:user/files/download_folder?path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2153,14 +1754,14 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The path of the folder to download. <b>[path - id]</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2179,7 +1780,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/download_folder?path=sit",
+											"raw": "{{baseUrl}}/:user/files/download_folder?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2191,13 +1792,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2248,7 +1849,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+									"raw": "{{baseUrl}}/:user/files/upload?path=eiusmod enim&mode=overwrite&autorename=true",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2260,12 +1861,12 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
-											"description": "Folder path in the user's Dropbox to save the file. <b>[path - id]</b><br /><b>If empty it points to the root folder.</b>"
+											"value": "eiusmod enim",
+											"description": "Folder path in the user's Dropbox to save the file. <b>[path - id]</b><br /><b>if empty, it will be saved in the root with the name of the file in the url.</b>"
 										},
 										{
 											"key": "mode",
-											"value": "add",
+											"value": "overwrite",
 											"description": "Selects what to do if the file already exists.<br /><b>Default: add</b>"
 										},
 										{
@@ -2277,7 +1878,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2306,7 +1907,7 @@
 											]
 										},
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+											"raw": "{{baseUrl}}/:user/files/upload?path=eiusmod enim&mode=overwrite&autorename=true",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2318,11 +1919,11 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "mode",
-													"value": "add"
+													"value": "overwrite"
 												},
 												{
 													"key": "autorename",
@@ -2332,7 +1933,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2372,7 +1973,7 @@
 											]
 										},
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/upload?path=sit&mode=add&autorename=true",
+											"raw": "{{baseUrl}}/:user/files/upload?path=eiusmod enim&mode=overwrite&autorename=true",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2384,11 +1985,11 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "mode",
-													"value": "add"
+													"value": "overwrite"
 												},
 												{
 													"key": "autorename",
@@ -2398,7 +1999,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2434,7 +2035,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/upload_from_url?url=sit&path=sit",
+									"raw": "{{baseUrl}}/:user/files/upload_from_url?url=eiusmod enim&path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2446,19 +2047,19 @@
 									"query": [
 										{
 											"key": "url",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The URL to be saved."
 										},
 										{
 											"key": "path",
-											"value": "sit",
-											"description": "The path in Dropbox where the URL will be saved to.<br /><b>Example:</b> /images/cat.jpg"
+											"value": "eiusmod enim",
+											"description": "The path in Dropbox where the URL will be saved to.<br /><b>Example:</b> /images/cat.jpg<br /><b>if empty, it will be saved in the root with the name of the file in the url (if there is a filename).</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2477,7 +2078,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/upload_from_url?url=sit&path=sit",
+											"raw": "{{baseUrl}}/:user/files/upload_from_url?url=eiusmod enim&path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2489,17 +2090,17 @@
 											"query": [
 												{
 													"key": "url",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2535,7 +2136,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/copy?from_path=sit&to_path=sit&autorename=true",
+									"raw": "{{baseUrl}}/:user/files/copy?from_path=eiusmod enim&to_path=eiusmod enim&autorename=true",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2547,12 +2148,12 @@
 									"query": [
 										{
 											"key": "from_path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) Path in the user's Dropbox to be copied or moved. <b>[path - id - rev]</b>"
 										},
 										{
 											"key": "to_path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) Path in the user's Dropbox that is the destination. <b>[path - id - rev]</b>"
 										},
 										{
@@ -2564,8 +2165,8 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
-											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+											"value": ",",
+											"description": "(Required) <strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
 								}
@@ -2583,7 +2184,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/copy?from_path=sit&to_path=sit&autorename=true",
+											"raw": "{{baseUrl}}/:user/files/copy?from_path=eiusmod enim&to_path=eiusmod enim&autorename=true",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2595,11 +2196,11 @@
 											"query": [
 												{
 													"key": "from_path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "to_path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "autorename",
@@ -2609,8 +2210,8 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
-													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
+													"value": ",",
+													"description": "(Required) <strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
 										}
@@ -2645,7 +2246,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/move?from_path=sit&to_path=sit&autorename=true",
+									"raw": "{{baseUrl}}/:user/files/move?from_path=eiusmod enim&to_path=eiusmod enim&autorename=true",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2657,12 +2258,12 @@
 									"query": [
 										{
 											"key": "from_path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) Path in the user's Dropbox to be copied or moved. <b>[path - id - rev]</b>"
 										},
 										{
 											"key": "to_path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) Path in the user's Dropbox that is the destination. <b>[path - id - rev]</b>"
 										},
 										{
@@ -2674,7 +2275,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2693,7 +2294,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/move?from_path=sit&to_path=sit&autorename=true",
+											"raw": "{{baseUrl}}/:user/files/move?from_path=eiusmod enim&to_path=eiusmod enim&autorename=true",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2705,11 +2306,11 @@
 											"query": [
 												{
 													"key": "from_path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "to_path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "autorename",
@@ -2719,7 +2320,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2755,7 +2356,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/delete?path=sit",
+									"raw": "{{baseUrl}}/:user/files/delete?path=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2767,14 +2368,14 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) Path in the user's Dropbox to delete. <b>[path - id]</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2793,7 +2394,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/delete?path=sit",
+											"raw": "{{baseUrl}}/:user/files/delete?path=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2805,13 +2406,13 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2847,7 +2448,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=sit&format=png&size=w256h256&mode=strict",
+									"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=eiusmod enim&format=jpeg&size=w2048h1536&mode=strict",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2860,21 +2461,21 @@
 										{
 											"key": "resource",
 											"value": "path",
-											"description": "(Required) Information specifying which file to preview.<br />This could be a path to a file, a shared link pointing to a file, or a shared link pointing to a folder, with a relative path. <b>[path - id - rev]</b>"
+											"description": "(Required) Identification type for the file."
 										},
 										{
 											"key": "PathOrLink",
-											"value": "sit",
-											"description": "(Required) ."
+											"value": "eiusmod enim",
+											"description": "(Required) <u>OPTIONS</u>: A path or a shared_link depending on the option chosen in `resource`.<br />- A path to a file.<b>[path - id - rev]</b><br />- A shared link pointing to a file or folder, with a relative path."
 										},
 										{
 											"key": "format",
-											"value": "png",
+											"value": "jpeg",
 											"description": "The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts.<br /><b>Default: jpeg</b>"
 										},
 										{
 											"key": "size",
-											"value": "w256h256",
+											"value": "w2048h1536",
 											"description": "The size for the thumbnail image.<br /><b>Default: w64h64</b>"
 										},
 										{
@@ -2886,7 +2487,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -2905,7 +2506,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=sit&format=png&size=w256h256&mode=strict",
+											"raw": "{{baseUrl}}/:user/files/get_thumbnail?resource=path&PathOrLink=eiusmod enim&format=jpeg&size=w2048h1536&mode=strict",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2921,15 +2522,15 @@
 												},
 												{
 													"key": "PathOrLink",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "format",
-													"value": "png"
+													"value": "jpeg"
 												},
 												{
 													"key": "size",
-													"value": "w256h256"
+													"value": "w2048h1536"
 												},
 												{
 													"key": "mode",
@@ -2939,7 +2540,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -2980,7 +2581,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+									"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=eiusmod enim&access=viewer&audience=no_one&allow_download=true&expires=eiusmod enim&require_password=true&link_password=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -2992,17 +2593,17 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The path to be shared by the shared link. <b>[path - id - rev]</b>"
 										},
 										{
 											"key": "access",
-											"value": "max",
+											"value": "viewer",
 											"description": "Requested access level you want the audience to gain from this link.<br /><b><i>Note: modifying access level for an existing link is not supported. Omit this field if it is the case.</i></b>"
 										},
 										{
 											"key": "audience",
-											"value": "public",
+											"value": "no_one",
 											"description": "The new audience who can benefit from the access level specified by the link's access level specified in the `access` field.<br /><b>Default: public</b>"
 										},
 										{
@@ -3012,7 +2613,7 @@
 										},
 										{
 											"key": "expires",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Expiration time of the shared link. Format: %Y-%m-%dT%H:%M:%SZ<br /><b>By default the link won't expire</b>"
 										},
 										{
@@ -3022,14 +2623,14 @@
 										},
 										{
 											"key": "link_password",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />If `require_password` is true, this is needed to specify the password to access the link."
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -3049,7 +2650,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+											"raw": "{{baseUrl}}/:user/sharing/create_shared_link?path=eiusmod enim&access=viewer&audience=no_one&allow_download=true&expires=eiusmod enim&require_password=true&link_password=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3061,15 +2662,15 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "access",
-													"value": "max"
+													"value": "viewer"
 												},
 												{
 													"key": "audience",
-													"value": "public"
+													"value": "no_one"
 												},
 												{
 													"key": "allow_download",
@@ -3077,7 +2678,7 @@
 												},
 												{
 													"key": "expires",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "require_password",
@@ -3085,13 +2686,13 @@
 												},
 												{
 													"key": "link_password",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3127,7 +2728,7 @@
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+									"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=eiusmod enim&access=viewer&audience=no_one&allow_download=true&expires=eiusmod enim&require_password=true&link_password=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3139,17 +2740,17 @@
 									"query": [
 										{
 											"key": "url",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) URL of the shared link to change its settings."
 										},
 										{
 											"key": "access",
-											"value": "max",
+											"value": "viewer",
 											"description": "Requested access level you want the audience to gain from this link.<br /><b><i>Note: modifying access level for an existing link is not supported. Omit this field if it is the case.</i></b>"
 										},
 										{
 											"key": "audience",
-											"value": "public",
+											"value": "no_one",
 											"description": "The new audience who can benefit from the access level specified by the link's access level specified in the `access` field.<br /><b>Default: public</b>"
 										},
 										{
@@ -3159,7 +2760,7 @@
 										},
 										{
 											"key": "expires",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />Expiration time of the shared link. Format: %Y-%m-%dT%H:%M:%SZ<br /><b>By default the link won't expire</b>"
 										},
 										{
@@ -3169,14 +2770,14 @@
 										},
 										{
 											"key": "link_password",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<u>For Dropbox Professional y Dropbox Business:</u><br />If `require_password` is true, this is needed to specify the password to access the link."
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -3196,7 +2797,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=sit&access=max&audience=public&allow_download=true&expires=sit&require_password=true&link_password=sit",
+											"raw": "{{baseUrl}}/:user/sharing/modify_shared_link?url=eiusmod enim&access=viewer&audience=no_one&allow_download=true&expires=eiusmod enim&require_password=true&link_password=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3208,15 +2809,15 @@
 											"query": [
 												{
 													"key": "url",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "access",
-													"value": "max"
+													"value": "viewer"
 												},
 												{
 													"key": "audience",
-													"value": "public"
+													"value": "no_one"
 												},
 												{
 													"key": "allow_download",
@@ -3224,7 +2825,7 @@
 												},
 												{
 													"key": "expires",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "require_password",
@@ -3232,13 +2833,13 @@
 												},
 												{
 													"key": "link_password",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3274,7 +2875,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=sit&members=&members=&access_level=editor",
+									"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=eiusmod enim&members=&members=&access_level=editor",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3286,7 +2887,7 @@
 									"query": [
 										{
 											"key": "file",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) File to which to add members. <b>[path - id]</b>"
 										},
 										{
@@ -3308,7 +2909,7 @@
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -3328,7 +2929,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=sit&members=&members=&access_level=editor",
+											"raw": "{{baseUrl}}/:user/sharing/add_file_member?file=eiusmod enim&members=&members=&access_level=editor",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3340,7 +2941,7 @@
 											"query": [
 												{
 													"key": "file",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "members",
@@ -3358,7 +2959,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3394,7 +2995,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=sit&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&quiet=sit&custom_message=sit",
+									"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=eiusmod enim&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&members={\"member\":\"change_me\",\"access_level\":\"change_me\"}&quiet=eiusmod enim&custom_message=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3406,7 +3007,7 @@
 									"query": [
 										{
 											"key": "shared_folder_id",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "(Required) The ID for the shared folder.<br /><i>pattern='[-_0-9a-zA-Z:]+'</i>"
 										},
 										{
@@ -3421,19 +3022,19 @@
 										},
 										{
 											"key": "quiet",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "Whether added members should not be notified via email and device notifications of your invite.<br /><b>Default: false</b>"
 										},
 										{
 											"key": "custom_message",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "Optional message to display to added members in their invitation."
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -3453,7 +3054,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=sit&members=[object Object]&members=[object Object]&quiet=sit&custom_message=sit",
+											"raw": "{{baseUrl}}/:user/sharing/add_folder_member?shared_folder_id=eiusmod enim&members=[object Object]&members=[object Object]&quiet=eiusmod enim&custom_message=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3465,7 +3066,7 @@
 											"query": [
 												{
 													"key": "shared_folder_id",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "members",
@@ -3477,17 +3078,17 @@
 												},
 												{
 													"key": "quiet",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "custom_message",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3523,7 +3124,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=sit&direct_only=true",
+									"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=eiusmod enim&direct_only=true",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3535,24 +3136,24 @@
 									"query": [
 										{
 											"key": "path",
-											"value": "sit",
-											"description": "The path to the file or folder to get the link(s). <b>[path - id - rev]<br />If empty, returns a list of all shared links for the current user.</b>"
+											"value": "eiusmod enim",
+											"description": "The path to the file or folder to get the shared link(s). <b>[path - id - rev]<br />If empty, returns a list of all shared links for the current user.</b>"
 										},
 										{
 											"key": "direct_only",
 											"value": "true",
-											"description": "<u>true:</u> Only the given file or folder shared link will be returned.<br /><u>false:</u> An array containing the shared link and also the shared links to the parent folders.<br /><b>Default: false</b>"
+											"description": "<u>true</u>: Only the given file or folder shared link will be returned.<br /><u>false</u>: An array containing the shared link and also the shared links to the parent folders.<br /><b>Default: true</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
 								},
-								"description": "Returns the shared link of a file or folder if `direct_only` is true. Otherwise, returns a list of all shared links that<br /> allow access to the given path - direct links to the given path and links to parent folders of the given path.<br />Links to parent folders can be suppressed by setting `direct_only` to true.<br /><br />For a file to be previewed with the url of <b>content_url</b> it has to be shared and have the access level set to <b>public</b>."
+								"description": "Returns the shared link of a file or folder if `direct_only` is true (default). Otherwise, returns a list of all shared links that<br /> allow access to the given path - direct links to the given path and links to parent folders of the given path.<br />Links to parent folders can be suppressed by setting `direct_only` to true.<br /><br /><u>Note</u>:<br />- For a file to be previewed with the url of <b>content_url</b> it has to be shared and have the access level set to <b>public</b>.<br /><br />- `direct_only` must be set to `true` to get the shared_link to a single file, if it is `false` you could also get the shared_link from<br />the parent link referencing that file, which you couldn't use to embed a file or download directly."
 							},
 							"response": [
 								{
@@ -3567,7 +3168,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=sit&direct_only=true",
+											"raw": "{{baseUrl}}/:user/sharing/list_shared_links?path=eiusmod enim&direct_only=true",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3579,7 +3180,7 @@
 											"query": [
 												{
 													"key": "path",
-													"value": "sit"
+													"value": "eiusmod enim"
 												},
 												{
 													"key": "direct_only",
@@ -3589,7 +3190,7 @@
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3625,7 +3226,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=sit",
+									"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=eiusmod enim",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3637,14 +3238,14 @@
 									"query": [
 										{
 											"key": "limit",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "The maximum number of results to return per request.<br /><b>Default: 1000</b>"
 										}
 									],
 									"variable": [
 										{
 											"key": "user",
-											"value": "sit",
+											"value": "eiusmod enim",
 											"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 										}
 									]
@@ -3664,7 +3265,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=sit",
+											"raw": "{{baseUrl}}/:user/sharing/list_folders?limit=eiusmod enim",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -3676,13 +3277,13 @@
 											"query": [
 												{
 													"key": "limit",
-													"value": "sit"
+													"value": "eiusmod enim"
 												}
 											],
 											"variable": [
 												{
 													"key": "user",
-													"value": "sit",
+													"value": "eiusmod enim",
 													"description": "<strike>user path is not required in swagger</strike><br />(leave it blank)"
 												}
 											]
@@ -3721,11 +3322,11 @@
 					"urlencoded": [
 						{
 							"key": "client_key",
-							"value": "dolor ad aute incidid"
+							"value": "sunt"
 						},
 						{
 							"key": "client_secret",
-							"value": "aliquip proident esse nulla"
+							"value": "aute aliquip"
 						}
 					]
 				},
@@ -3751,11 +3352,11 @@
 							"urlencoded": [
 								{
 									"key": "client_key",
-									"value": "dolor ad aute incidid"
+									"value": "sunt"
 								},
 								{
 									"key": "client_secret",
-									"value": "aliquip proident esse nulla"
+									"value": "aute aliquip"
 								}
 							]
 						},
@@ -3791,11 +3392,11 @@
 							"urlencoded": [
 								{
 									"key": "client_key",
-									"value": "dolor ad aute incidid"
+									"value": "sunt"
 								},
 								{
 									"key": "client_secret",
-									"value": "aliquip proident esse nulla"
+									"value": "aute aliquip"
 								}
 							]
 						},
@@ -3831,11 +3432,11 @@
 							"urlencoded": [
 								{
 									"key": "client_key",
-									"value": "dolor ad aute incidid"
+									"value": "sunt"
 								},
 								{
 									"key": "client_secret",
-									"value": "aliquip proident esse nulla"
+									"value": "aute aliquip"
 								}
 							]
 						},
@@ -3871,11 +3472,11 @@
 							"urlencoded": [
 								{
 									"key": "client_key",
-									"value": "dolor ad aute incidid"
+									"value": "sunt"
 								},
 								{
 									"key": "client_secret",
-									"value": "aliquip proident esse nulla"
+									"value": "aute aliquip"
 								}
 							]
 						},
@@ -3918,17 +3519,17 @@
 					"urlencoded": [
 						{
 							"key": "user",
-							"value": "in reprehenderit laboris et ad"
+							"value": "magna dolore"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{baseUrl}}/refresh_dbx_token",
+					"raw": "{{baseUrl}}/refresh_dbx_access_token",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"refresh_dbx_token"
+						"refresh_dbx_access_token"
 					]
 				},
 				"description": "Manual refresh dropbox access_token and save it to the database."
@@ -3944,17 +3545,17 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "in reprehenderit laboris et ad"
+									"value": "magna dolore"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"raw": "{{baseUrl}}/refresh_dbx_access_token",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"refresh_dbx_token"
+								"refresh_dbx_access_token"
 							]
 						}
 					},
@@ -3980,17 +3581,17 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "in reprehenderit laboris et ad"
+									"value": "magna dolore"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"raw": "{{baseUrl}}/refresh_dbx_access_token",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"refresh_dbx_token"
+								"refresh_dbx_access_token"
 							]
 						}
 					},
@@ -4016,17 +3617,17 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "in reprehenderit laboris et ad"
+									"value": "magna dolore"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"raw": "{{baseUrl}}/refresh_dbx_access_token",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"refresh_dbx_token"
+								"refresh_dbx_access_token"
 							]
 						}
 					},
@@ -4052,17 +3653,17 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "in reprehenderit laboris et ad"
+									"value": "magna dolore"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/refresh_dbx_token",
+							"raw": "{{baseUrl}}/refresh_dbx_access_token",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"refresh_dbx_token"
+								"refresh_dbx_access_token"
 							]
 						}
 					},
@@ -4095,20 +3696,20 @@
 					"urlencoded": [
 						{
 							"key": "user",
-							"value": "labore ",
+							"value": "consectetur nostrud ullamco dolor veli",
 							"description": "(Required) "
 						},
 						{
 							"key": "new_user_name",
-							"value": "ad dolor"
+							"value": "labore nostrud"
 						},
 						{
 							"key": "client_key",
-							"value": "eiu"
+							"value": "in do"
 						},
 						{
 							"key": "client_secret",
-							"value": "Lorem non"
+							"value": "est nulla"
 						}
 					]
 				},
@@ -4133,20 +3734,20 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "labore ",
+									"value": "consectetur nostrud ullamco dolor veli",
 									"description": "(Required) "
 								},
 								{
 									"key": "new_user_name",
-									"value": "ad dolor"
+									"value": "labore nostrud"
 								},
 								{
 									"key": "client_key",
-									"value": "eiu"
+									"value": "in do"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lorem non"
+									"value": "est nulla"
 								}
 							]
 						},
@@ -4182,20 +3783,20 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "labore ",
+									"value": "consectetur nostrud ullamco dolor veli",
 									"description": "(Required) "
 								},
 								{
 									"key": "new_user_name",
-									"value": "ad dolor"
+									"value": "labore nostrud"
 								},
 								{
 									"key": "client_key",
-									"value": "eiu"
+									"value": "in do"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lorem non"
+									"value": "est nulla"
 								}
 							]
 						},
@@ -4231,20 +3832,20 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "labore ",
+									"value": "consectetur nostrud ullamco dolor veli",
 									"description": "(Required) "
 								},
 								{
 									"key": "new_user_name",
-									"value": "ad dolor"
+									"value": "labore nostrud"
 								},
 								{
 									"key": "client_key",
-									"value": "eiu"
+									"value": "in do"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lorem non"
+									"value": "est nulla"
 								}
 							]
 						},
@@ -4280,20 +3881,20 @@
 							"urlencoded": [
 								{
 									"key": "user",
-									"value": "labore ",
+									"value": "consectetur nostrud ullamco dolor veli",
 									"description": "(Required) "
 								},
 								{
 									"key": "new_user_name",
-									"value": "ad dolor"
+									"value": "labore nostrud"
 								},
 								{
 									"key": "client_key",
-									"value": "eiu"
+									"value": "in do"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lorem non"
+									"value": "est nulla"
 								}
 							]
 						},

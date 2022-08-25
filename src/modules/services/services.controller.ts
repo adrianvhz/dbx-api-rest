@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Req, Res, Patch, Delete, UseFilters, HttpAdapterHost } from "@nestjs/common";
-import { ApiHideProperty, ApiParam, ApiTags } from "@nestjs/swagger";
+import { ApiTags } from "@nestjs/swagger";
 import { ServicesService } from "./services.service";
 import { ServicesAuth } from "src/decorators/authorization/services-auth.decorator";
 import {

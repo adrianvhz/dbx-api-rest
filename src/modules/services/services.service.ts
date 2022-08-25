@@ -1,4 +1,4 @@
-import { Injectable, HttpException, BadRequestException } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { UsersService } from 'src/modules/users/users.service';
 import { ConfigService } from '@nestjs/config';
 import { Buffer } from "buffer"
@@ -6,10 +6,10 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as mime from "mime/lite"
 import stream from "stream"
-import type { Request, Response } from "express";
 import { Dropbox } from 'dropbox';
-import { fileNameFromUrl } from 'src/lib/getFilenameFromUrl';
+import { getFileNameFromUrl } from 'src/lib/getFileNameFromUrl';
 import { isURL } from 'class-validator';
+import type { Request, Response } from "express";
 
 @Injectable()
 export class ServicesService {
@@ -197,7 +197,7 @@ export class ServicesService {
 	async filesUploadFileFromUrl(dbx: Dropbox, query: IQuery) {
 		if (!isURL(query.url)) throw new HttpException("The url parameter is not a url.", 400);
 
-		var filename = fileNameFromUrl(query.url);
+		var filename = getFileNameFromUrl(query.url);
 		var fileMetadata = await dbx.filesSaveUrl({
 			path: query.path ? (query.path.includes(".") ? query.path : `${query.path}/${filename}`) : `/${filename}`,
 			url: query.url
