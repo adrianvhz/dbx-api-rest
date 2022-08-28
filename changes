@@ -1,4 +1,5 @@
-- Se elimino cosas de examples para que el servidor funcione unicamente como un API REST.
+- Se elimino cosas de examples que requerian cierta logica en los servicios de vinculacion, de este modo el servidor no depende de datos
+internos y permite funcione unicamente como un API REST.
 
 - Para usar el "SEGUNDO METHODO" se tiene que pasar un parametro adicional en el body, "init" el cual puede tener cualquier valor.
 	user = "test"
