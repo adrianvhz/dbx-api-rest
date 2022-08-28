@@ -1,0 +1,13 @@
+- Se elimino cosas de examples para que el servidor funcione unicamente como un API REST.
+
+- Para usar el "SEGUNDO METHODO" se tiene que pasar un parametro adicional en el body, "init" el cual puede tener cualquier valor.
+	user = "test"
+	domain = "https://example.com/dashboard"
+	init = true  ||  "whatever here"
+
+- Un unico cookie es guardado con la informacion del body que el usuario previamente proveyó, el cual sirve para almacenar temporamente
+la data y evitar que se pierda al momento de redirigir a la authorization OAuth2. De esta manera el servidor - API se encarga de hacer 
+todo el trabajo: *validar, *crear, *registrar *redirigir - *etc.
+
+- Se evito usar un motor de plantilla para renderizar la vista, en su lugar, se uso datos binarios simples para cargar la vista
+de respuesta (msg de operacion existosa), debido a que solo seria requerido una unica vez (esto puede cambiar si se require).
