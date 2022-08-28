@@ -46,16 +46,4 @@ export class AppController {
 	async modifyCredentials(@Body() body: ModifyCredentialsDto) {
 		return this.appService.modifyCredentials(body);
 	}
-
-	/** THIS IS A EXAMPLE VIEW FOR AUTH REGISTER REDIRECT - SECOND METHOD - DELETE IT IN PRODUCTION */
-	@ApiExcludeEndpoint()
-	@Get("dashboard")
-	dashboardView() {
-		return `
-			<div>
-				<p>Aca seria donde se redirigio según el parametro 'domain' proporcionado en el body.</p>
-				<button><a href="/">Ir a Home</a></button>
-			</div>
-		`
-	}
 }

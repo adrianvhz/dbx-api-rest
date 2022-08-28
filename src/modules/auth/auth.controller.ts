@@ -4,8 +4,7 @@ import { AuthService } from "src/modules/auth/auth.service";
 import { LocalAuthGuard } from "../../guards/local-auth.guard";
 import { LinkAccountSwagger, UnlinkAccountSwagger } from "src/decorators/swagger/auth";
 import type { Request, Response } from "express";
-import url from "whatwg-url"
-import { ClientRegisterFilter } from "src/filters/client-register.filter";
+import { RegisterFilter } from "src/filters/client-register.filter";
 
 
 @ApiTags("auth")
@@ -33,14 +32,15 @@ export class AuthController {
 	 * 
 	 * - The method has to be GET because it receives the oauth2 redirect.
 	 */
+	@UseFilters(RegisterFilter)
 	@ApiExcludeEndpoint()
 	@Get("register")
-	async apiRegister(@Req() req: Request, @Res() res: Response) {
+	apiRegister(@Req() req: Request, @Res() res: Response) {
 		return this.authService.apiRegister(req, res);
 	}
 
+	@UseFilters(RegisterFilter)
 	@Post("client_register")
-	@UseFilters(ClientRegisterFilter)
 	clientRegister(@Req() req: Request) {
 		return this.authService.clientRegister({
 			user: req.body.user,

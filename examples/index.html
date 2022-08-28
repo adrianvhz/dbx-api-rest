@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script>
-		var cookies = Object.fromEntries(document.cookie.replace(/\s/g,'').split(";").map(el => el.split("=")))
-		if (!cookies.SESSION_ID) {
-			window.location.href = "/login"
-		}
-	</script>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +12,6 @@
 	<header>
 		<div class="div-docs">
 			<a href="/docs" class="docs btn btn-primary">docs</a>
-			<button id="logout-btn" class="docs btn btn-danger">logout</button>
 		</div>
 		&lt;header&gt;&lt;/header&gt;
 		<nav class="navbar">
@@ -34,27 +27,31 @@
 	</section>
 	<div class="apps-links">
 		<div>
-			<p style="font-family: Georgia, 'Times New Roman', Times, serif;">LINK ACCOUNTS</p>
+			<p style="font-family: Georgia, 'Times New Roman', Times, serif;">LINK DROPBOX ACCOUNT</p>
 		</div>
-		<div>
-			<button class="btn btn-warning">Cloud storage AWS</button>
-		</div>
-		<div class="mt-2">
-			<button class="btn btn-danger">Onedrive</button>
-		</div>
+
 		<div class="mt-2">
 			<form class="form" action="/auth/link_account" method="POST">
-				<button class="btn btn-primary" type="submit">Dropbox - get url for link account</button>
-			</form>
-		</div>
-		<div class="mt-2">
-			<form class="form" action="/auth/link_account" method="POST">
-				<input type="hidden" name="register" value="true" />
-				<button class="btn btn-primary" type="submit">Dropbox - register from api</button>
+				<div class="mb-3">
+					<label for="user" class="form-label">User:</label>
+					<input type="text" name="user" id="user" class="form-control" placeholder="test">
+				</div>
+				<div class="mb-3">
+					<label for="domain" class="form-label">Domain:</label>
+					<input type="text" name="domain" id="domain" class="form-control" placeholder="https://example.com/dashboard">
+				</div>
+				
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="init" id="first">
+					<label class="form-check-label" for="flexRadioDefault1">
+						Second method?
+					</label>
+					<small>&nbsp;&nbsp;default to first (regular)</small><br />
+				</div>
+				<button class="btn btn-primary my-2" type="submit">Submit - Dropbox</button>
 			</form>
 		</div>
 	</div>
 
-	<script src="./script.js" type="module"></script>
 </body>
 </html>

@@ -61,6 +61,23 @@ Realizar una prueba de conexión rapida.
 $ curl.exe -X POST -H "Content-type: application/json" -d '{\"user\":\"test\",\"domain\":\"http:\\example.com\"}' 'https://<hostname>/auth/link_account'
 ```
 
+<br>
+
+> Para que el api se encarge de levantar el form (segundo metodo) se tiene que pasa el<br>
+> parametro "register" con cualquier valor en el body.<br>
+> 
+```bash
+curl -X POST https://<host>/auth/register
+	--header "Content-Type": "application/x-www-form-urlencoded"
+```
+```js
+	user: = "test",
+	domain = "https://example.com/dashboard",
+	init = true
+```
+
+<br>
+
 ## Environment Variables
 
 | KEY                  | Description                                |

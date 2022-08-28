@@ -1,10 +1,9 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpStatus } from '@nestjs/common';
-import { DropboxResponseError } from 'dropbox';
 import { Request, Response } from 'express';
 
 @Catch()
-export class ClientRegisterFilter implements ExceptionFilter {
-	catch(exception: DropboxResponseError<any> & Error, host: ArgumentsHost) {
+export class RegisterFilter implements ExceptionFilter {
+	catch(exception: any, host: ArgumentsHost) {
 		const ctx = host.switchToHttp();
 		const response = ctx.getResponse<Response>();
 		const request = ctx.getRequest<Request>();

@@ -40,20 +40,21 @@ export class AuthService {
 		return await this.usersService.findOne(userField, { throwError: false }) || "null";
 	}
 
+	/** endpoint: /auth/link_account */
 	async linkDbxAccount(req: Request, res: Response) {
 		var user = req.user;
 		var isNew = false;
+		const { user: username, domain, init: initDbxForm } = req.body;
 
 		/** Create user if not exists */ // @ts-ignore
 		if (user === "null") {
 			/** FOR SECOND METHOD - API SENDS DBX FORM */ 
-			if (req.body.register) {
+			if (initDbxForm) {
 				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "create" })
 			}
-			
 			/** PRINCIPAL METHOD */
 			user = await this.usersService.create({
-				user: req.body.user,
+				user: username,
 				client_key: await generateSecureRandomKey(9),
 				client_secret: await generateSecureRandomKey(9),
 				status: "inactive"
@@ -63,7 +64,7 @@ export class AuthService {
 		
 		/* Update user  */
 		else { // if user exists and is in inactive status
-			if (req.body.register && user.status === "inactive") {
+			if (initDbxForm && user.status === "inactive") {
 				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "update" });
 			}
 		}
@@ -74,7 +75,7 @@ export class AuthService {
 				client_secret: user.client_secret
 			},                                                                       
 			status: user.status.toUpperCase(),
-			OAUTH2_AUTHORIZE: user.status === "inactive" && !req.body.register ? await getDropboxOAuth2Url(this._configDbx.clientId, req.body.domain) : undefined,
+			OAUTH2_AUTHORIZE: user.status === "inactive" && !initDbxForm ? await getDropboxOAuth2Url(this._configDbx.clientId, domain) : undefined,
 			message: user.status === "active" ? "The user exists and has a linked dropbox account." : "The user exists BUT doesn't have a linked dropbox account.",
 			user_created_msg: isNew ? "The user has been successfully created!" : undefined,
 			isNew: isNew || undefined
@@ -121,11 +122,10 @@ export class AuthService {
 	}
 
 
-
+	/** endpoint: /auth/register */
    async apiRegister(req: Request, res: Response) {
-		var username = JSON.parse(req.cookies.SESSION_ID).user;
+		var { username, action, redirect_to } = JSON.parse(req.cookies.body);
 		var code = req.query.code as string;
-		var redirect_to = req.cookies.redirect_to;
 		var tokens = (await this._dbx_auth.getAccessTokenFromCode(`${req.protocol}://${req.get("host")}${req.path}`, code)).result as any
 		var accountData = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result;
 		var dbx_data = {
@@ -137,7 +137,7 @@ export class AuthService {
 		}
 
 		// If req.cookie.action === "update"
-		if (req.cookies.action === "update") {
+		if (action === "update") {
 			await this.usersService.update(username, {
 				...dbx_data,
 				status: "active"
@@ -154,8 +154,45 @@ export class AuthService {
 			});
 		}
 
-		res.redirect(308, redirect_to)
+		res.status(200).end(`
+			<html>
+				<head>
+					<style>
+						button {
+							display: inline-block;
+							font-weight: 400;
+							color: #212529;
+							text-align: center;
+							border: 1px solid transparent;
+							padding: .375rem .75rem;
+							font-size: 1rem;
+							line-height: 1.5;
+							color: #fff;
+							border-radius: .25rem;
+							background-color: #007bff;
+						}
+
+						button:hover{
+							background-color: #0069d9;
+							cursor: pointer;
+					 	}
+
+						a {
+							text-decoration: none;
+						}
+					</style>
+				</head>
+			<body>
+				<div>
+					<p>La cuenta se vinculo correctamente!</p>
+					<a href=${redirect_to}>${redirect_to && `<button>Home</button></a>`}
+				</div>
+			</body>
+			</html>
+	`)
 	}
+
+	/** endpoint: /auth/client_register */
 
 	/**
 	 * body: (application/json OR application/x-www-form-urlencoded)
