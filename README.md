@@ -64,13 +64,12 @@ $ curl.exe -X POST -H "Content-type: application/json" -d '{\"user\":\"test\",\"
 <br>
 
 > Para que el api se encarge de levantar el form (segundo metodo) se tiene que pasa el<br>
-> parametro "register" con cualquier valor en el body.<br>
+> parametro "init" con cualquier valor en el body.<br>
 > 
 ```bash
 curl -X POST https://<host>/auth/register
 	--header "Content-Type": "application/x-www-form-urlencoded"
-```
-```js
+	-d	\
 	user: = "test",
 	domain = "https://example.com/dashboard",
 	init = true
