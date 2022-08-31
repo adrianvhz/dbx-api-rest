@@ -156,8 +156,7 @@ export class AuthService {
 
 		res.status(200).end(`
 		<!doctype html>
-			<html lang="en">
-
+		<html lang="en">
 			<head>
 				<title>Dropbox</title>
 				<meta charset="utf-8">
@@ -184,19 +183,19 @@ export class AuthService {
 								<img src="http://im.pcmag.com/pcmagus/photo/default/dropbox-logo_34k8.png" style="width: 30%">
 							</h2>
 						</div>
-						<div class="mb-5">
+						<div class="mb-4">
 							<h2><img src="https://proeducative.com/images/logo-proeducative.png" height="50px"></h2>
 						</div>
-						
 						<div class="col-lg-12">
 							<div class="row justify-content-md-center">
-								<div class="col-lg-12 text-center mb-4">
-									${ redirect_to ? `<a href="${redirect_to}" type="button" class="btn btn-lg btn-primary col-lg-2">Ir a Inicio</a>` : `` }
+								<div class="col-lg-12 text-center mb-3">
+									<a href="${ redirect_to ? redirect_to : 'https://proeducative.com' }" id="reload" type="button" class="btn btn-lg btn-primary col-lg-2">Ir a la Plataforma</a>
+									<h6 class="mt-3">Redirigiendo en <span id="counter"></span></h6> 
 								</div>
 								<div class="col-lg-5">
 									<p class="text-justify">Reúne archivos tradicionales, contenido en la nube, documentos de Dropbox Paper y accesos directos web en un solo lugar, para que puedas organizarte y abordar tu trabajo de manera eficiente. Almacena tus archivos en un lugar seguro al que puedas acceder desde tu computadora, teléfono o tablet..</p>
 									<p><a href="https://www.dropbox.com" target="_blank">Haga clic aquí para visitar el sitio de Dropbox</a></p>
-									<h3>Lo mejor de usar dropbox</h3>
+									<h4>Lo mejor de usar dropbox</h4>
 									<ul>
 										<li>Disponible las 24 horas.</li>
 										<li>Comparte carpetas y archivos usando links.</li>
@@ -211,9 +210,20 @@ export class AuthService {
 				</div>
 				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+				<script>
+				var count = 5;
+				function counter() {
+					document.getElementById("counter").innerHTML = count;
+					count = count - 1;      
+					setTimeout(counter, 1000);
+					if (count == 0) {
+						document.getElementById("reload").click();
+					}
+				}
+				counter();
+				</script>
 			</body>
-
-			</html>
+		</html>
 	`)
 	}
 
