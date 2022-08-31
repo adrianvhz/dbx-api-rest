@@ -155,39 +155,64 @@ export class AuthService {
 		}
 
 		res.status(200).end(`
-			<html>
-				<head>
-					<style>
-						button {
-							display: inline-block;
-							font-weight: 400;
-							color: #212529;
-							text-align: center;
-							border: 1px solid transparent;
-							padding: .375rem .75rem;
-							font-size: 1rem;
-							line-height: 1.5;
-							color: #fff;
-							border-radius: .25rem;
-							background-color: #007bff;
-						}
+		<!doctype html>
+			<html lang="en">
 
-						button:hover{
-							background-color: #0069d9;
-							cursor: pointer;
-					 	}
-
-						a {
-							text-decoration: none;
-						}
-					</style>
-				</head>
+			<head>
+				<title>Dropbox</title>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				<link rel="icon" type="image/png" href="https://proeducative.com/favicon.png">
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+				<style>
+					html { height: 100%;}
+					body { background: linear-gradient(rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70)),  url('http://gypa.ge/wp-content/uploads/2014/11/empresarial.jpg');background-size: cover; }
+					.container { display: flex;flex-flow: row wrap;}
+					.item { flex: 1 1 15rem; }
+					h1 { color: white; text-align: center; font-family: Arial; font-weight: bold; background-color:#007EE5; margin-bottom: 30px;padding: 15px;margin-left: -12px;margin-right: -12px;}
+					h2 { text-align: center;  font-family: Arial; }
+					h3 { font-family: Arial; font-size: 2rem }
+					.btn-primary { background-color: #007EE5;font-weight: 600; }
+				</style>
+			</head>
 			<body>
-				<div>
-					<p>La cuenta se vinculo correctamente!</p>
-					<a href=${redirect_to}>${redirect_to && `<button>Home</button></a>`}
+				<div class="container-fluid">
+					<div Class="item">
+						<h1>VINCULACIÓN EXITOSA</h1>
+						<div>
+							<h2>
+								<img src="http://im.pcmag.com/pcmagus/photo/default/dropbox-logo_34k8.png" style="width: 30%">
+							</h2>
+						</div>
+						<div class="mb-5">
+							<h2><img src="https://proeducative.com/images/logo-proeducative.png" height="50px"></h2>
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="row justify-content-md-center">
+								<div class="col-lg-12 text-center mb-4">
+									${ redirect_to ? `<a href="${redirect_to}" type="button" class="btn btn-lg btn-primary col-lg-2">Ir a Inicio</a>` : `` }
+								</div>
+								<div class="col-lg-5">
+									<p class="text-justify">Reúne archivos tradicionales, contenido en la nube, documentos de Dropbox Paper y accesos directos web en un solo lugar, para que puedas organizarte y abordar tu trabajo de manera eficiente. Almacena tus archivos en un lugar seguro al que puedas acceder desde tu computadora, teléfono o tablet..</p>
+									<p><a href="https://www.dropbox.com" target="_blank">Haga clic aquí para visitar el sitio de Dropbox</a></p>
+									<h3>Lo mejor de usar dropbox</h3>
+									<ul>
+										<li>Disponible las 24 horas.</li>
+										<li>Comparte carpetas y archivos usando links.</li>
+										<li>Mejor gestión de documentos laborales.</li>
+										<li>Admite variedad de formatos y sistemas.</li>
+										<li>Respaldo en todo momento.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 			</body>
+
 			</html>
 	`)
 	}
