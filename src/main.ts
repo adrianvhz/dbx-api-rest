@@ -3,11 +3,11 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { ConfigService } from "@nestjs/config";
 import { ValidationPipe } from "@nestjs/common";
+import { disableFavicon } from "./middlewares/disable-favicon";
 import * as cookieParser from "cookie-parser";
 import * as multer from "multer"
 import initSwagger from "./app.swagger";
 import type { CorsOptions } from "@nestjs/common/interfaces/external/cors-options.interface";
-import { disableFavicon } from "./middlewares/disable-favicon";
 
 async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -18,14 +18,13 @@ async function bootstrap() {
 
 	const corsOptions: CorsOptions = {
 		origin: '*',
-		methods: ["GET", "POST", "PATCH", "HEAD", "PUT", "DELETE"]
-		// credentials: true,
-		// preflightContinue: false
+		methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+		credentials: true
 	};
 
 	app.enableCors(corsOptions);
-	app.useGlobalPipes(new ValidationPipe())
-	app.use(multer().single("file"))
+	app.useGlobalPipes(new ValidationPipe());
+	app.use(multer().single("file"));
 	app.use(cookieParser());
 	app.use(disableFavicon)
 
@@ -36,5 +35,5 @@ async function bootstrap() {
 		console.log(`Running on: ${await app.getUrl()}`)
 	});
 }
+
 bootstrap();
- 

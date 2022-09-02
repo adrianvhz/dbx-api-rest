@@ -18,7 +18,9 @@
 		"test:watch": "jest --watch",
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-		"test:e2e": "jest --config ./test/jest-e2e.json"
+		"test:e2e": "jest --config ./test/jest-e2e.json",
+		"docker:build": "docker build -t dbx-api:1.0 .",
+		"docker:run": "docker run -p 4100:5000 --env-file .env dbx-api:1.0"
 	},
 	"dependencies": {
 		"@nestjs/common": "^8.0.0",
@@ -80,7 +82,7 @@
 		"rootDir": "src",
 		"testRegex": ".*\\.spec\\.ts$",
 		"transform": {
-		"^.+\\.(t|j)s$": "ts-jest"
+			"^.+\\.(t|j)s$": "ts-jest"
 		},
 		"collectCoverageFrom": [
 			"**/*.(t|j)s"

@@ -1,18 +1,6 @@
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-
-# User-specific files
-*.suo
-*.user
-*.userosscache
-
-# User-specific files (MonoDevelop/Xamarin Studio)
-*.userprefs
-
 # Build results
 dist
 [Dd]ebug/
@@ -21,33 +9,6 @@ dist
 [Rr]eleases/
 x64/
 x86/
-
-# Visual Studio 2015 cache/options directory
-.vs/
-
-# Benchmark Results
-BenchmarkDotNet.Artifacts/
-
-# .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
-**/Properties/launchSettings.json
-
-# Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opendb
-
-# ReSharper is a .NET coding add-in
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-
-# Visual Studio code coverage results
-*.coverage
-*.coveragexml
 
 # Publish Web Output
 *.[Pp]ublish.xml

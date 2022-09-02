@@ -1,16 +1,17 @@
-import { HttpException, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { UsersService } from "src/modules/users/users.service";
 import { getDropboxOAuth2Url } from "src/lib/getDropboxOAuth2Url";
 import { generateSecureRandomKey } from "src/lib/generateSecureRandomKey";
 import { Dropbox, DropboxAuth } from "dropbox";
 import { expiresToken } from "src/lib/expiresToken";
+import * as path from "path";
 import { setRedirectionToDropboxOAuth2 } from "src/utils/setRedirectionToDropboxOAuth2";
 import { UserDoc } from "../users/schemas/user.schema";
 import node_fetch from "node-fetch";
-import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
-import type { Request, Response } from "express"
 import { UserAlreadyInactiveException } from "src/exceptions/UserAlreadyInactive";
+import type { IDropboxConfig } from "src/common/interfaces/IDropboxConfig";
+import type { Request, Response } from "express";
 
 
 @Injectable()
@@ -153,7 +154,8 @@ export class AuthService {
 				...dbx_data,
 			});
 		}
-
+		
+		// res.status(200).sendFile(path.join(__dirname, "..", "..", "..", "views", "success_response.html"));
 		res.status(200).end(`
 		<!doctype html>
 		<html lang="en">
