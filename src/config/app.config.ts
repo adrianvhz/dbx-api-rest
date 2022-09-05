@@ -1,6 +1,6 @@
 export default () => ({
 	http: {
-		host: process.env.APP_HOST || "0.0.0.0",
+		host: "0.0.0.0",
 		port: process.env.APP_PORT || process.env.PORT || "5000"
 	},
 

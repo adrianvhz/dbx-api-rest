@@ -10,7 +10,7 @@ COPY --chown=node:node . .
 
 USER node
 
-# BUILDING
+# BUILDING 
 
 FROM node:16.14-alpine3.15 as build
 
