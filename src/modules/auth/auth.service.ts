@@ -18,7 +18,8 @@ import type { Request, Response } from "express";
 export class AuthService {
 	private readonly _configDbx: IDropboxConfig;
 	private readonly _dbx: (access_token: string) => Dropbox;
-	private readonly _dbx_auth: DropboxAuth
+	private readonly _dbx_auth: DropboxAuth;
+	private http_protocol: string;
 	
 	constructor(
 		private readonly configService: ConfigService,
@@ -30,7 +31,8 @@ export class AuthService {
 			clientId: this._configDbx.clientId,
 			clientSecret: this._configDbx.clientSecret,
 			fetch: node_fetch
-		})
+		});
+		this.http_protocol = configService.get<string>("enviroment") === "PRODUCTION" ? "https" : "http"
 	}
 
 	async validateUser(userField: string) {
@@ -51,7 +53,7 @@ export class AuthService {
 		if (user === "null") {
 			/** FOR SECOND METHOD - API SENDS DBX FORM */ 
 			if (initDbxForm) {
-				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "create" })
+				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "create", protocol: this.http_protocol })
 			}
 			/** PRINCIPAL METHOD */
 			user = await this.usersService.create({
@@ -61,12 +63,12 @@ export class AuthService {
 				status: "inactive"
 			})
 			isNew = true;
-		} 
+		}
 		
 		/* Update user  */
 		else { // if user exists and is in inactive status
 			if (initDbxForm && user.status === "inactive") {
-				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "update" });
+				return setRedirectionToDropboxOAuth2({ req, res, clientId: this._configDbx.clientId, action: "update", protocol: this.http_protocol });
 			}
 		}
 
@@ -127,7 +129,7 @@ export class AuthService {
    async apiRegister(req: Request, res: Response) {
 		var { username, action, redirect_to } = JSON.parse(req.cookies.body);
 		var code = req.query.code as string;
-		var tokens = (await this._dbx_auth.getAccessTokenFromCode(`${req.protocol}://${req.get("host")}${req.path}`, code)).result as any
+		var tokens = (await this._dbx_auth.getAccessTokenFromCode(`${this.http_protocol}://${req.get("host")}${req.path}`, code)).result as any
 		var accountData = (await this._dbx(tokens.access_token).usersGetCurrentAccount()).result;
 		var dbx_data = {
 			dbx_account_id: tokens.account_id,
@@ -155,7 +157,7 @@ export class AuthService {
 			});
 		}
 		
-		// res.status(200).sendFile(path.join(__dirname, "..", "..", "..", "views", "success_response.html"));
+		// res.status(200).sendFile(path.join(__dirname, "..", "views", "success_response.html"));
 		res.status(200).end(`
 		<!doctype html>
 		<html lang="en">

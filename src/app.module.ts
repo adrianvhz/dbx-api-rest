@@ -9,6 +9,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { JwtService } from "@nestjs/jwt";
 import { CastArrayMiddleware } from "./middlewares/cast-array.middleware";
+import { validateEnv } from "./env.validation";
 import appConfig from "./config/app.config";
 import * as path from "path";
 
@@ -18,7 +19,8 @@ const imports = [
 			envFilePath: ".env",
 			isGlobal: true,
 			cache: true,
-			load: [appConfig]
+			load: [appConfig],
+			validate: validateEnv
 		}
 	),
 	AuthModule,

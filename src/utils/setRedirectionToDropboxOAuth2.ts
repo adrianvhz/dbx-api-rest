@@ -1,6 +1,6 @@
 import { getDropboxOAuth2Url } from "src/lib/getDropboxOAuth2Url";
 
-export async function setRedirectionToDropboxOAuth2({ req, res, clientId, action }) {
+export async function setRedirectionToDropboxOAuth2({ req, res, clientId, action, protocol }) {
 	var date = new Date();
 	date.setMinutes(date.getMinutes() + 5);
 	var body = {
@@ -10,5 +10,5 @@ export async function setRedirectionToDropboxOAuth2({ req, res, clientId, action
 	}
 
 	res.cookie("body", JSON.stringify(body), { httpOnly: true, expires: date });
-	return res.redirect(await getDropboxOAuth2Url(clientId, `${req.protocol}://${req.get("host")}/auth/register`));
+	return res.redirect(await getDropboxOAuth2Url(clientId, `${protocol}://${req.get("host")}/auth/register`));
 }
