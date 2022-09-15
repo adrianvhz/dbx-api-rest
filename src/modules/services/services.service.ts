@@ -27,7 +27,13 @@ export class ServicesService {
 			limit: query.limit && +query.limit
 		});
 
-		return files.result.entries;
+		return files.result;
+	}
+
+	async filesListFolderContinue(dbx: Dropbox, query: IQuery) {
+		var files = await dbx.filesListFolderContinue({ cursor: query.cursor });
+
+		return files.result;
 	}
 
 	// here 22:25 -DELETE

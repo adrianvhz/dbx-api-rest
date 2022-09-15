@@ -1,4 +1,5 @@
 export * from "./list-folder.decorator";
+export * from "./list-folder-continue.decorator";
 export * from "./search.decorator";
 export * from "./get-metadata.decorator";
 export * from "./download.decorator";

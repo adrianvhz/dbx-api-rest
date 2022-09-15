@@ -4,6 +4,7 @@ import { ServicesService } from "./services.service";
 import { ServicesAuth } from "src/decorators/authorization/services-auth.decorator";
 import {
 	FilesListFolderSwagger,
+	FilesListFolderContinueSwagger,
 	FilesSearchSwagger,
 	FilesGetMetadataSwagger,
 	FilesDownloadSwagger,
@@ -39,6 +40,12 @@ export class ServicesController {
 	@Get(":user/files/list_folder")
 	async filesListFolder(@Req() req: Request) {
 		return this.servicesServices.filesListFolder(req.dbx, req.query as IQuery);
+	}
+
+	@FilesListFolderContinueSwagger()
+	@Get(":user/files/list_folder_continue")
+	async filesListFolderContinue(@Req() req: Request) {
+		return this.servicesServices.filesListFolderContinue(req.dbx, req.query as IQuery);
 	}
 
 	@FilesSearchSwagger()
